@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    # include all from trades/urls.py file
-
-    # home page redirected to trades
-    path('', include('trades.urls')),
-
-    path('trades/', include('trades.urls')),
     path('admin/', admin.site.urls),
+
+    url(r'^trades/$',
+        TradeListView.as_view(),
+        name='trades'),
+
+    url(r'^$', HomeView.as_view(), name='home'),
 ]
