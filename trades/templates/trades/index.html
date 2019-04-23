@@ -1,0 +1,14 @@
+{% load static %}
+
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"> -->
+
+{% if trades_list %}
+    <ul>
+    {% for trade in trades_list %}
+    <li>A trade...</li>
+        <!-- <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li> -->
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No trade is available.</p>
+{% endif %}

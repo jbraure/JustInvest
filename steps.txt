@@ -8,5 +8,6 @@ Steps done :
   - open http://127.0.0.1:8000
 - Make initial migrations :> python3 manage.py migrate
 - Create urls.py in trades/, with mapping to IndexView
+- Create class IndexView in views.py
 - Create Trade model
 - Declare the Trades app
