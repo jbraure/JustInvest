@@ -9,7 +9,6 @@ from .models import Trade
 
 class HomeView(generic.ListView):
     template_name = 'trades/home.html'
-    context_object_name = 'trades_list'
 
     # @method_decorator(
     #     login_required(login_url=reverse_lazy('login')))
