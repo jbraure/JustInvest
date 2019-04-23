@@ -11,3 +11,8 @@ Steps done :
 - Create class IndexView in views.py
 - Create Trade model
 - Declare the Trades app
+- Create index.html in trades/templates/trades/
+- Migrate DB :> python3 manage.py makemigrations
+  - > python3 manage.py migrate
+- Create a superuser :> python3 manage.py createsuperuser
+  - With my usual credentials
