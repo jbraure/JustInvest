@@ -6,3 +6,5 @@ Steps done :
 - Create a 'trades' app :> python3 manage.py startapp trades
 - Run server to check... :> python3 manage.py runserver
   - open http://127.0.0.1:8000
+- Make initial migrations :> python3 manage.py migrate
+- Create urls.py in trades/
