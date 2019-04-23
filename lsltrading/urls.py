@@ -15,13 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
+from trades.views import HomeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    url(r'^trades/$',
-        TradeListView.as_view(),
-        name='trades'),
 
     url(r'^$', HomeView.as_view(), name='home'),
 ]
