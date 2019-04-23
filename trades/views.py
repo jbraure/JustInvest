@@ -3,11 +3,12 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.views.generic import TemplateView
 
 from .models import Trade
 
 
-class HomeView(generic.ListView):
+class HomeView(TemplateView):
     template_name = 'trades/home.html'
 
     # @method_decorator(
