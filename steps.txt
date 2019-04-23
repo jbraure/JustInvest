@@ -9,3 +9,4 @@ Steps done :
 - Make initial migrations :> python3 manage.py migrate
 - Create urls.py in trades/, with mapping to IndexView
 - Create Trade model
+- Declare the Trades app
