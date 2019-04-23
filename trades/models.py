@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Trade(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
     ticker = models.CharField('Ticker', max_length=20)
     currency = models.CharField('Currency', max_length=5)
     purchase_date = models.DateTimeField('Date purchased', default=timezone.now)

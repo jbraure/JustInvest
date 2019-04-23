@@ -1,8 +1,11 @@
 {% extends "trades/base.html" %}
 {% block title%}Welcome to the LSL Trading website.{% endblock title %}
 {% block page-content %}
-  <h1>Welcome {{ user.first_name }}!</h1>
-
+<!-- <h1>Welcome {{ user.first_name }}!</h1> -->
+<h1>Welcome {{ user.username }}!</h1>
+  <div class="home-option">To login as another user please click
+    <a href="{% url "logout" %}">here.</a>
+  </div>
   <div class="home-option">To go to the admin panel
     please click <a href="{% url "admin:index" %}">here.</a>
   </div>

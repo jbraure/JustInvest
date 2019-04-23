@@ -17,3 +17,4 @@ Steps done :
   - With my usual credentials
 - Check that Admin console is functional. It should be, at this point.
 - Create base.html, footer.html, home.html
+- Adds login and logout

@@ -17,9 +17,21 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
 from trades.views import HomeView
+from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    url(r'^login/$',
+        auth_views.LoginView.as_view(),
+        kwargs={'template_name': 'admin/login.html'},
+        name='login'),
+
+    url(r'^logout/$',
+        auth_views.LogoutView.as_view(),
+        kwargs={'next_page': reverse_lazy('home')},
+        name='logout'),
 
     url(r'^$', HomeView.as_view(), name='home'),
 ]
