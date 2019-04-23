@@ -16,3 +16,4 @@ Steps done :
   - > python3 manage.py migrate
 - Create a superuser :> python3 manage.py createsuperuser
   - With my usual credentials
+- Check that Admin console is functional. It should be, at this point.
