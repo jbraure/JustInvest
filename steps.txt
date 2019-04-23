@@ -7,13 +7,13 @@ Steps done :
 - Run server to check... :> python3 manage.py runserver
   - open http://127.0.0.1:8000
 - Make initial migrations :> python3 manage.py migrate
-- Create urls.py in trades/, with mapping to IndexView
-- Create class IndexView in views.py
+- Create class HomeView in views.py
 - Create Trade model
 - Declare the Trades app
-- Create index.html in trades/templates/trades/
+- Create home.html in trades/templates/trades/
 - Migrate DB :> python3 manage.py makemigrations
   - > python3 manage.py migrate
 - Create a superuser :> python3 manage.py createsuperuser
   - With my usual credentials
 - Check that Admin console is functional. It should be, at this point.
+- Create base.html, footer.html, home.html
