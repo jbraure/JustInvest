@@ -1,5 +1,8 @@
 Steps done :
-- Create Django project in heroku/ folder : django-admin startproject lsltrading
+- Create Django project in heroku/ folder :> django-admin startproject lsltrading
 - Rename top folder lsltrading to lsltrading-project/
-- Create git repo in lsltrading-project/ : git init
-- Initial commit.
+- Create git repo in lsltrading-project/ :> git init
+- Initial commit in SourceTree
+- Create a 'trades' app :> python3 manage.py startapp trades
+- Run server to check... :> python3 manage.py runserver
+  - open http://127.0.0.1:8000
