@@ -7,7 +7,7 @@ class Trade(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,)
     ticker = models.CharField('Ticker', max_length=20)
     currency = models.CharField('Currency', max_length=5)
-    purchase_date = models.DateTimeField('Date purchased', auto_now=True)
+    purchase_date = models.DateTimeField('Date purchased', default=timezone.now)
     sell_date = models.DateTimeField('Date sold', auto_now=False)
     number_of_shares = models.IntegerField('Number of shares', default=1)
     price = models.FloatField()
