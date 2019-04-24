@@ -1,8 +1,8 @@
 {% extends "trades/base.html" %}
-{% block title %}Welcome to the LSL Trading website.{% endblock title %}
+{% block title %}LSL{% endblock title %}
 {% block page-content %}
 <!-- <h1>Welcome {{ user.first_name }}!</h1> -->
-<h1>Welcome {{ user.username }}!</h1>
+<h2>Welcome {{ user.username }}!</h2>
   <div class="home-option">
     <a href="{% url "trades" %}">Trades</a> |
     <a href="{% url "create" %}">Create new trade</a> |

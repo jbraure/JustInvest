@@ -10,13 +10,17 @@
     {% endblock meta %}
 
     {% block styles %}
+      <link href="{% static "trades/css/main.css" %}" rel="stylesheet">
+      <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap-theme.min.css">
-    {% endblock styles %}
+        {% endblock styles %}
     <title> {% block title %}Title{% endblock title %} </title>
   </head>
 
   <body>
+    <div>
+      <h1><a href="/">LSL Trading</a></h1>
+    </div>
     <div id="page-content">
       {% block page-content %}
       {% endblock page-content %}
