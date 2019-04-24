@@ -38,3 +38,6 @@ Steps done :
 - Create create.html
 - Create TradeForm in forms.py
 - Create TradeFormView in views.py
+
+## Change style, use bootstrap
+- add tag in base.html
