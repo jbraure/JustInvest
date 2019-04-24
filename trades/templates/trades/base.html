@@ -10,10 +10,11 @@
     {% endblock meta %}
 
     {% block styles %}
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
       <link href="{% static "trades/css/main.css" %}" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        {% endblock styles %}
+    {% endblock styles %}
     <title> {% block title %}Title{% endblock title %} </title>
   </head>
 
