@@ -20,3 +20,17 @@ class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         return self.render_to_response(context)
+
+class TradeListView(TemplateView):
+    template_name = 'trades/list.html'
+
+    @method_decorator(
+        login_required(login_url=reverse_lazy('login')))
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        trades = Trade.objects \
+            .filter(user=request.user) \
+            .order_by('-purchase_date')
+        # matches = (self._parse_entry(trade) for trade in trades)
+        context['trades'] = list(trades)
+        return self.render_to_response(context)

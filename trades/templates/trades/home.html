@@ -3,6 +3,9 @@
 {% block page-content %}
 <!-- <h1>Welcome {{ user.first_name }}!</h1> -->
 <h1>Welcome {{ user.username }}!</h1>
+<div class="home-option">To see the list of your trades
+  please click <a href="{% url "trades" %}">here.</a>
+</div>
   <div class="home-option">To login as another user please click
     <a href="{% url "logout" %}">here.</a>
   </div>

@@ -13,9 +13,16 @@ Steps done :
 - Create home.html in trades/templates/trades/
 - Migrate DB :> python3 manage.py makemigrations
   - > python3 manage.py migrate
+
+## Users and authentication
 - Create a superuser :> python3 manage.py createsuperuser
   - With my usual credentials
 - Check that Admin console is functional. It should be, at this point.
 - Create base.html, footer.html, home.html
 - Adds login and logout
+
+## Data display as list
 - Open database with "DB Bowser for SQLite" and insert some records.
+- Add "trades" list url mapping in urls.py
+- Add TradeListView in views.py
+- Create list.html

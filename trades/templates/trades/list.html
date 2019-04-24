@@ -1,0 +1,38 @@
+{% extends "trades/base.html" %}
+{% block title%} Trades {% endblock title %}
+  {% block page-content %}
+  {% if trades %}
+    <h1>Your trades ({{ trades|length }})</h1>
+    <div>TODO Insert new trade</div>
+    <table class="trades-table">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Currency</th>
+          <th>Purchase date</th>
+          <th>Sell date</th>
+          <th>Nb of shares</th>
+          <th>Price paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trade in trades %}
+          <tr class="trades-list {% cycle 'light-gray' 'white' %}">
+            <td><code class="code">{{ trade.ticker }}</code></td>
+            <td>{{ trade.currency }}</td>
+            <td>{{ trade.purchase_date }}</td>
+            <td>{{ trade.sell_date }}</td>
+            <td>{{ trade.number_of_shares }}</td>
+            <<td>{{ trade.price }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <h1>You have no trade</h1>
+    <div>TODO2 Insert new trade</div>
+  {% endif %}
+{% endblock page-content %}
+{% block footer %}
+  {% include "trades/footer.html" %}
+{% endblock footer %}

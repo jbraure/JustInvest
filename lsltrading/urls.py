@@ -16,12 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
-from trades.views import HomeView
+from trades.views import HomeView, TradeListView
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    url(r'^trades/$',
+        TradeListView.as_view(),
+        name='trades'),
 
     url(r'^login/$',
         auth_views.LoginView.as_view(),
