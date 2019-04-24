@@ -26,3 +26,7 @@ Steps done :
 - Add "trades" list url mapping in urls.py
 - Add TradeListView in views.py
 - Create list.html
+
+## Add some style
+- css ref in base.html
+- add css file in static/trades/css/main.css
