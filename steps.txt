@@ -30,3 +30,11 @@ Steps done :
 ## Add some style
 - css ref in base.html
 - add css file in static/trades/css/main.css
+
+## Data insertion
+- Create form in forms.py
+- Add link in home.html
+- Adapt urls.py
+- Create create.html
+- Create TradeForm in forms.py
+- Create TradeFormView in views.py

@@ -1,0 +1,18 @@
+{% extends "trades/base.html" %}
+{% block title%}Insert a new trade{% endblock title %}
+{% block page-content %}
+  {% if messages %}
+    {% for message in messages %}
+      <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+  <h1>Insert a new Trade</h1>
+  <form action="{% url "create" %}" method="post">
+    {% csrf_token %}{{ form.as_p }}
+    <input type="submit" value="Create">
+  </form><br>
+{% endblock page-content %}
+{% block footer %}
+  <div><a href="{% url "trades" %}">See your trades.</a></div>
+  {% include "trades/footer.html" %}
+{% endblock footer %}
