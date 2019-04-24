@@ -1,9 +1,11 @@
 /* HTML tags */
 a { color: #333; }
 /* Classes */
-h1 a, h2 a{
+h1 a{
     color: #C25100;
-    font-family: 'Lobster';
+}
+h1 a, h2{
+    font-family: 'Russo One', sans-serif;
 }
 body {
     padding-left: 15px;

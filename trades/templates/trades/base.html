@@ -11,15 +11,15 @@
 
     {% block styles %}
       <link href="{% static "trades/css/main.css" %}" rel="stylesheet">
-      <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+      <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         {% endblock styles %}
     <title> {% block title %}Title{% endblock title %} </title>
   </head>
 
   <body>
-    <div>
-      <h1><a href="/">LSL Trading</a></h1>
+    <div class="page-header">
+      <h1><a href="/">LSL Trader</a></h1>
     </div>
     <div id="page-content">
       {% block page-content %}
