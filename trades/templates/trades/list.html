@@ -3,7 +3,7 @@
   {% block page-content %}
   {% if trades %}
     <h1>Your trades ({{ trades|length }})</h1>
-    <div>TODO Insert new trade</div>
+    <div><a href="{% url "create" %}">Create new trade</a></div>
     <table class="trades-table">
       <thead>
         <tr>
@@ -30,7 +30,7 @@
     </table>
   {% else %}
     <h1>You have no trade</h1>
-    <div>TODO2 Insert new trade</div>
+    <div><a href="{% url "create" %}">Create new trade</a></div>
   {% endif %}
 {% endblock page-content %}
 {% block footer %}
