@@ -18,3 +18,4 @@ Steps done :
 - Check that Admin console is functional. It should be, at this point.
 - Create base.html, footer.html, home.html
 - Adds login and logout
+- Open database with "DB Bowser for SQLite" and insert some records.
