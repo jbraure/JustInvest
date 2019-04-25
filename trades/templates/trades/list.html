@@ -8,10 +8,10 @@
       <thead>
         <tr>
           <th>Ticker</th>
-          <th>Currency</th>
+          <th>Nb of shares</th>
           <th>Purchase date</th>
           <th>Sell date</th>
-          <th>Nb of shares</th>
+          <th>Currency</th>
           <th>Price paid</th>
           <th>Current price</th>
           <th>Total value</th>
@@ -21,13 +21,13 @@
         {% for trade in trades %}
           <tr class="trades-list {% cycle 'light-gray' 'white' %}">
             <td><code class="code">{{ trade.ticker }}</code></td>
-            <td>{{ trade.currency }}</td>
+            <td>{{ trade.number_of_shares }}</td>
             <td>{{ trade.purchase_date }}</td>
             <td>{{ trade.sell_date }}</td>
-            <td>{{ trade.number_of_shares }}</td>
+            <td>{{ trade.currency }}</td>
             <td>{{ trade.price_paid }}</td>
-            <th>{{ trade.get_current_price_str }}</th>
-            <th>{{ trade.get_total_value_str }}</th>
+            <td>{{ trade.get_current_price_str }}</td>
+            <td>{{ trade.get_total_value_str }}</td>
           </tr>
         {% endfor %}
       </tbody>
