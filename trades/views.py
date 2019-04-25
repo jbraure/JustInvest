@@ -13,6 +13,9 @@ from django.views.generic import TemplateView, FormView
 from .models import Trade
 from .forms import TradeForm
 
+import pandas as pd
+from datetime import date, timedelta
+from pandas_datareader.data import DataReader
 
 class HomeView(TemplateView):
     template_name = 'trades/home.html'
@@ -34,8 +37,17 @@ class TradeListView(TemplateView):
             .filter(user=request.user) \
             .order_by('-purchase_date')
         # matches = (self._parse_entry(trade) for trade in trades)
+        self.update_values(trades)
         context['trades'] = list(trades)
         return self.render_to_response(context)
+
+    def update_values(self, trades):
+        start_date = date.today() - timedelta(4)
+        for trade in trades:
+            print('Getting current value for ticker', trade.ticker)
+            stock_data = DataReader(trade.ticker, 'yahoo', start=start_date)
+            last_close = float(stock_data.tail(1)['Close'])
+            trade.current_price = last_close
 
 class TradeFormView(SuccessMessageMixin, FormView):
     template_name = 'trades/create.html'

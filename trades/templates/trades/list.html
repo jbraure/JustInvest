@@ -26,7 +26,7 @@
             <td>{{ trade.sell_date }}</td>
             <td>{{ trade.number_of_shares }}</td>
             <td>{{ trade.price_paid }}</td>
-            <th>{{ trade.current_price }}</th>
+            <th>{{ trade.get_current_price_str }}</th>
             <th>{{ trade.total_value }}</th>
           </tr>
         {% endfor %}

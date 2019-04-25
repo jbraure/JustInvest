@@ -12,7 +12,10 @@ class Trade(models.Model):
     number_of_shares = models.IntegerField('Number of shares', default=1)
     price_paid = models.FloatField('Price paid')
     current_price = models.FloatField('Current price')
-    total_value = models.FloatField('Total value')    
+    total_value = models.FloatField('Total value')
 
     def __str__(self):
         return self.ticker + ' ' + purchase_date
+
+    def get_current_price_str(self):
+        return '{:.2f}'.format(self.current_price)
