@@ -25,9 +25,9 @@
             <td>{{ trade.purchase_date }}</td>
             <td>{{ trade.sell_date }}</td>
             <td>{{ trade.currency }}</td>
-            <td>{{ trade.price_paid }}</td>
-            <td>{{ trade.get_current_price_str }}</td>
-            <td>{{ trade.get_total_value_str }}</td>
+            <td class='right-align'>{{ trade.price_paid }}</td>
+            <td class='right-align'>{{ trade.get_current_price_str }}</td>
+            <td class='right-align'>{{ trade.get_total_value_str }}</td>
           </tr>
         {% endfor %}
       </tbody>
