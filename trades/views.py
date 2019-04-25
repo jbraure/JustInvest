@@ -36,18 +36,24 @@ class TradeListView(TemplateView):
         trades = Trade.objects \
             .filter(user=request.user) \
             .order_by('-purchase_date')
-        # matches = (self._parse_entry(trade) for trade in trades)
         self.update_values(trades)
         context['trades'] = list(trades)
         return self.render_to_response(context)
 
     def update_values(self, trades):
+        """
+        Updates values on the Trades objects
+            - Gets current (last close) price
+        """
         start_date = date.today() - timedelta(4)
         for trade in trades:
-            print('Getting current value for ticker', trade.ticker)
             stock_data = DataReader(trade.ticker, 'yahoo', start=start_date)
+            # last close price
             last_close = float(stock_data.tail(1)['Close'])
             trade.current_price = last_close
+            # current asset values
+            trade.total_value = trade.number_of_shares * last_close
+
 
 class TradeFormView(SuccessMessageMixin, FormView):
     template_name = 'trades/create.html'

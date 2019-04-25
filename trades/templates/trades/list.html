@@ -27,7 +27,7 @@
             <td>{{ trade.number_of_shares }}</td>
             <td>{{ trade.price_paid }}</td>
             <th>{{ trade.get_current_price_str }}</th>
-            <th>{{ trade.total_value }}</th>
+            <th>{{ trade.get_total_value_str }}</th>
           </tr>
         {% endfor %}
       </tbody>

@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Trade(models.Model):
+    format_string = '{:8.2f}'
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
     ticker = models.CharField('Ticker', max_length=20)
     currency = models.CharField('Currency', max_length=5)
@@ -18,4 +20,7 @@ class Trade(models.Model):
         return self.ticker + ' ' + purchase_date
 
     def get_current_price_str(self):
-        return '{:.2f}'.format(self.current_price)
+        return '{:8.2f}'.format(self.current_price)
+
+    def get_total_value_str(self):
+        return '{:8.2f}'.format(self.total_value)
