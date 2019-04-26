@@ -1,6 +1,7 @@
 {% extends "trades/base.html" %}
 {% block title%} Trades {% endblock title %}
   {% block page-content %}
+    <div><a href="{% url "home" %}">Portfolio</a> > <a href="{% url "trades" %}">Trades</a> </div>
   {% if trades %}
     <h2>Your trades ({{ trades|length }})</h2>
     <div><a href="{% url "create" %}">+ Create a new trade</a></div><br>
@@ -36,6 +37,7 @@
     <h1>You have no trade</h1>
     <div><a href="{% url "create" %}">Create new trade</a></div>
   {% endif %}
+  <br>
 {% endblock page-content %}
 {% block footer %}
   {% include "trades/footer.html" %}

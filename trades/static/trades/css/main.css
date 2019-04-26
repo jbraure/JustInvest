@@ -17,6 +17,12 @@ h1 a{
 .trader-color {
   color: white;
 }
+#login-box {
+  padding-bottom: 20px;
+}
+#page-content {
+  background-color: white;
+}
  h1 a, h2{
     font-family: 'Russo One', sans-serif;
 }

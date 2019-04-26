@@ -7,7 +7,12 @@
       <p class="{{ message.tags }}">{{ message }}</p>
     {% endfor %}
   {% endif %}
-  <h2>Insert a new Trade</h2>
+  <div><a href="{% url "home" %}">Portfolio</a> >
+    <a href="{% url "trades" %}">Trades</a> >
+    Create a new trade
+  </div>
+
+  <h2>Create a new Trade</h2>
   <form action="{% url "create" %}" method="post">
     {% csrf_token %}
     {{ form|crispy }}
