@@ -38,7 +38,6 @@ urlpatterns = [
 
     url(r'^logout/$',
         auth_views.LogoutView.as_view(),
-        kwargs={'next_page': reverse_lazy('login')},
         name='logout'),
 
     url(r'^$', HomeView.as_view(), name='home'),
