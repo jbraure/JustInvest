@@ -9,12 +9,12 @@
     <a href="{% url "logout" %}">Logout</a> |
     <a href="{% url "admin:index" %}">Admin panel</a>
   </div>
-  <table>
-    <tr>
-      <td><div id="portfolio-container" style="height:600px;"></div></td>
-      <td><div id="pie-container" style="height: 600px;"></div></td>
-    </tr>
-  </table>
+  <div class="container">
+    <div class="row">
+      <div id="portfolio-container" style="width:400px; height:600px;"></div>
+      <div id="pie-container" style="height: 600px;"></div>
+    </div>
+  </div>
   <script>
     Highcharts.chart('portfolio-container', {
         chart: {
