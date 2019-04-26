@@ -4,8 +4,10 @@ a { color: #333; }
 h1 a{
     color: #C25100;
 }
-.page-header {
+.top-bottom-strip {
   background-color: #343a40;
+}
+.page-header {
   margin-top: 0;
   padding: 20px 20px 1px 40px;
 }
@@ -29,7 +31,13 @@ h1 a{
   text-align: right;
 }
 #footer {
+  margin-top: 20px;
   text-align: center;
+  height: 50px;
+  bottom: 0;
+}
+#footer p {
+  color: white;
 }
 .right-align {
     text-align: right

@@ -20,20 +20,22 @@
   </head>
 
   <body>
-    <div class="page-header title-font">
+    <div class="page-header title-font top-bottom-strip">
       <h1><a href="/"><span class="lsl-color">LSL</span> <span class="trader-color">Trader</span></a></h1>
     </div>
     <div id="page-content">
-      <p id="username-logout" class="title-font"> {{ user.username }} |
-      <a href="{% url "logout" %}">Logout</a> |
-      <a href="{% url "admin:index" %}">Admin</a>
+      {% if user.is_authenticated %}
+        <p id="username-logout" class="title-font"> {{ user.username }} |
+        <a href="{% url "logout" %}">Logout</a> |
+        <a href="{% url "admin:index" %}">Admin</a>
+      {% else %}
+        <p id="username-logout" class="title-font"> <a href="{% url "admin:index" %}">Admin</a></p>
+      {% endif %}
       </p>
       {% block page-content %}
       {% endblock page-content %}
     </div>
-    <div id="footer">
-      {% block footer %}
-      {% endblock footer %}
-    </div>
+    {% block footer %}
+    {% endblock footer %}
   </body>
 </html>
