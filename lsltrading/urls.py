@@ -33,12 +33,12 @@ urlpatterns = [
 
     url(r'^login/$',
         auth_views.LoginView.as_view(),
-        kwargs={'template_name': 'admin/login.html'},
+        kwargs={'next_page': reverse_lazy('home')},
         name='login'),
 
     url(r'^logout/$',
         auth_views.LogoutView.as_view(),
-        kwargs={'next_page': reverse_lazy('home')},
+        kwargs={'next_page': reverse_lazy('login')},
         name='logout'),
 
     url(r'^$', HomeView.as_view(), name='home'),

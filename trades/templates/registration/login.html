@@ -1,8 +1,14 @@
-{% block content %}
+{% extends "trades/base.html" %}
+{% load crispy_forms_tags %}
+{% block title%}Insert a new trade{% endblock title %}
+{% block page-content %}
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Login</button>
   </form>
-{% endblock %}
+{% endblock page-content %}
+{% block footer %}
+  {% include "trades/footer.html" %}
+{% endblock footer %}
