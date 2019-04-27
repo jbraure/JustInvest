@@ -19,6 +19,7 @@ from django.conf.urls import url
 from trades.views import HomeView, TradeListView, TradeFormView
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
+from trades import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,6 +40,11 @@ urlpatterns = [
     url(r'^logout/$',
         auth_views.LogoutView.as_view(),
         name='logout'),
+
+    #see https://youtu.be/c2hbT0uIcOQ
+    #ex: /trades/3/
+    url(r'^trades/(?P<trade_id>\d+)/$',
+        views.trade_id),
 
     url(r'^$', HomeView.as_view(), name='home'),
 ]

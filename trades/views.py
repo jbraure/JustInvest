@@ -9,9 +9,11 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.utils import timezone
 from django.views.generic import TemplateView, FormView
+from django.http import HttpResponse
 
 from .models import Trade
 from .forms import TradeForm
+
 
 import pandas as pd
 from datetime import date, timedelta
@@ -79,3 +81,9 @@ class TradeFormView(SuccessMessageMixin, FormView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
+
+def trade_id(request, trade_id):
+    print('OPEN TRADE NUMBER',trade_id)
+    return HttpResponse(trade_id)
+# url(r'^trades/<int:trade_id>',
+#         views.trade_id),
