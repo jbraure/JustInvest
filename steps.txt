@@ -41,3 +41,6 @@ Steps done :
 
 ## Change style, use bootstrap
 - add tag in base.html
+
+## Heroku deployment
+- Add DB settings in settings.py

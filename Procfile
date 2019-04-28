@@ -1,1 +1,1 @@
-web: gunicorn lsltrading-project.wsgi --log-file -
+web: gunicorn lsltrading.wsgi --log-file -
