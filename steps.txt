@@ -44,3 +44,4 @@ Steps done :
 
 ## Heroku deployment
 - Add DB settings in settings.py
+- Add static file setting in settings.py
