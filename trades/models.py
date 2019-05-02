@@ -17,7 +17,7 @@ class Trade(models.Model):
     total_value = models.FloatField('Total value', default=0)
 
     def __str__(self):
-        return self.ticker + ' ' + purchase_date
+        return self.ticker 
 
     def get_current_price_str(self):
         return '{:8.2f}'.format(self.current_price)
