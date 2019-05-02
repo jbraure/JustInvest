@@ -6,3 +6,4 @@ class TradeForm(ModelForm):
         model = Trade
         fields = ['ticker', 'currency', 'purchase_date', \
             'number_of_shares', 'price_paid']
+# add form validation for ticker name
