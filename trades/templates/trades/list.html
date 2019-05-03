@@ -9,6 +9,7 @@
       <thead>
         <tr>
           <th>Ticker</th>
+          <th>Name</th>
           <th>Nb of shares</th>
           <th>Purchase date</th>
           <th>Sell date</th>
@@ -22,6 +23,7 @@
         {% for trade in trades %}
           <tr class="trades-list {% cycle 'light-gray' 'white' %}">
             <td><code class="code">{{ trade.ticker }}</code></td>
+            <td>{{ trade.name }}</td>
             <td>{{ trade.number_of_shares }}</td>
             <td>{{ trade.purchase_date }}</td>
             <td>{{ trade.sell_date }}</td>
