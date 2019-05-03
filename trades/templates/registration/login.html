@@ -10,6 +10,143 @@
     <button type="submit" class="btn btn-success">Login</button>
   </form>
 </div>
+<div class="container">
+  <div class="row">
+    <div id="portfolio-container" style="width:400px; height:300px;"></div>
+    <div id="pie-container" style="height: 300px;"></div>
+  </div>
+</div>
+<script>
+  Highcharts.chart('portfolio-container', {
+      chart: {
+          type: 'spline'
+      },
+      title: {
+          text: 'Portfolio value'
+      },
+      subtitle: {
+          text: 'in CHF'
+      },
+      xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+              month: '%e. %b',
+              year: '%b'
+          },
+          title: {
+              text: 'Date'
+          }
+      },
+      yAxis: {
+          title: {
+              text: 'CHF'
+          },
+          min: 0
+      },
+      tooltip: {
+          headerFormat: '<b>{series.name}</b><br>',
+          pointFormat: '{point.x:%e. %b}: {point.y:.2f} CHF'
+      },
+
+      plotOptions: {
+          spline: {
+              marker: {
+                  enabled: true
+              }
+          }
+      },
+
+      colors: ['#000', '#6CF', '#39F', '#06C', '#036'],
+
+      // Define the data points. All series have a dummy year
+      // of 1970/71 in order to be compared on the same x axis. Note
+      // that in JavaScript, months start at 0 for January, 1 for February etc.
+      series: [{
+          name: "value",
+          data: [
+              [Date.UTC(1971, 1, 22), 0.45],
+              [Date.UTC(1971, 1, 25), 0.62],
+              [Date.UTC(1971, 1, 28), 0.68],
+              [Date.UTC(1971, 2,  4), 0.68],
+              [Date.UTC(1971, 2,  7), 0.65],
+              [Date.UTC(1971, 2, 10), 0.65],
+              [Date.UTC(1971, 2, 13), 0.75],
+              [Date.UTC(1971, 2, 16), 0.86],
+              [Date.UTC(1971, 2, 19), 1.14],
+              [Date.UTC(1971, 2, 22), 1.2],
+              [Date.UTC(1971, 2, 25), 1.27],
+              [Date.UTC(1971, 2, 27), 1.12],
+              [Date.UTC(1971, 2, 30), 0.98],
+              [Date.UTC(1971, 3,  3), 0.85],
+              [Date.UTC(1971, 3,  6), 1.04],
+              [Date.UTC(1971, 3,  9), 0.92],
+              [Date.UTC(1971, 3, 12), 0.96],
+              [Date.UTC(1971, 3, 15), 0.94],
+              [Date.UTC(1971, 3, 18), 0.99],
+              [Date.UTC(1971, 3, 21), 0.96],
+              [Date.UTC(1971, 3, 24), 1.15],
+              [Date.UTC(1971, 3, 27), 1.18],
+              [Date.UTC(1971, 3, 30), 1.20],
+              [Date.UTC(1971, 4,  3), 1.25],
+              [Date.UTC(1971, 4,  6), 1.96],
+              [Date.UTC(1971, 4,  9), 1.87],
+              [Date.UTC(1971, 4, 12), 1.88],
+              [Date.UTC(1971, 4, 15), 1.79],
+              [Date.UTC(1971, 4, 18), 2.54],
+              [Date.UTC(1971, 4, 21), 3.34]
+          ]
+      }]
+  });
+  Highcharts.chart('pie-container', {
+  chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+  },
+  title: {
+      text: 'Asset allocation'
+  },
+  tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: {
+                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+          }
+      }
+  },
+  series: [{
+      name: 'Ratio',
+      colorByPoint: true,
+      data: [{
+          name: 'Stocks',
+          y: 30,
+          sliced: true,
+          selected: true
+      },{
+          name: 'Long Term Bonds',
+          y: 40
+      },  {
+          name: 'Interm. Term Bonds',
+          y: 15
+      }, {
+          name: 'Gold',
+          y: 7.5
+      }, {
+          name: 'Commodities',
+          y: 7.5
+      }]
+  }]
+});
+</script>
 {% endblock page-content %}
 {% block footer %}
   {% include "trades/footer.html" %}
