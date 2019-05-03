@@ -60,7 +60,7 @@ class TradeListView(TemplateView):
 class TradeFormView(SuccessMessageMixin, FormView):
     template_name = 'trades/create.html'
     form_class = TradeForm
-    success_url = reverse_lazy('create')
+    success_url = reverse_lazy('trades')
     success_message = "Entry was created successfully"
 
     @method_decorator(
