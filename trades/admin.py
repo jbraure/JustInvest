@@ -8,12 +8,13 @@ from .models import Trade
 class TradeAdmin(admin.ModelAdmin):
 
     # fields displayed in admin panel list view
-    list_display = ('ticker', 'user', 'currency', 'number_of_shares', 'price_paid', 'purchase_date')
+    list_display = ('ticker', 'name', 'asset_class', 'user', 'currency',
+        'number_of_shares', 'price_paid', 'purchase_date', 'total_value')
 
     fieldsets = [
         ('Trade detail', # label displayed in admin trade detail
         # displayed / editable fields in detail panel :
-        {'fields': ['user', 'ticker', 'currency', 'number_of_shares', 'price_paid', 'purchase_date']})
+        {'fields': ['user', 'name', 'asset_class', 'ticker', 'currency', 'number_of_shares', 'price_paid', 'purchase_date']})
     ]
 
     # this adds a filter feature on the right of the panel

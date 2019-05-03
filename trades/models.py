@@ -9,6 +9,7 @@ class Trade(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
     ticker = models.CharField('Ticker', max_length=20, default='AAPL')
     name = models.CharField('Name', max_length=50, default='Apple')
+    asset_class = models.CharField('Asset class', max_length=50, default='Stock')
     currency = models.CharField('Currency', max_length=5, default='USD')
     purchase_date = models.DateTimeField('Date purchased', default=timezone.now)
     sell_date = models.DateTimeField('Date sold', auto_now=False, default=None, blank=True, null=True)

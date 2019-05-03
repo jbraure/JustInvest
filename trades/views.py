@@ -44,7 +44,7 @@ class TradeListView(TemplateView):
 
     def update_values(self, trades):
         """
-        Updates values on the Trades objects
+        Updates values on the Trade objects
             - Gets current (last close) price
         """
         start_date = date.today() - timedelta(4)
@@ -82,8 +82,8 @@ class TradeFormView(SuccessMessageMixin, FormView):
         self.object.user = self.request.user
         self.object.save()
 
+# ex: /trades/3/
+# url(r'^trades/<int:trade_id>', views.trade_id),
 def trade_id(request, trade_id):
     print('OPEN TRADE NUMBER',trade_id)
     return HttpResponse(trade_id)
-# url(r'^trades/<int:trade_id>',
-#         views.trade_id),
