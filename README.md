@@ -64,7 +64,6 @@ https://justinvest.herokuapp.com/ | https://git.heroku.com/justinvest.git
 - If needed, run `heroku run python manage.py migrate` to migrate the remote database.
 - Run `heroku run python manage.py createsuperuser` to create the Django superuser on the remote database.
 
-
 ## Admin console customization
 - edit admin.py
 
