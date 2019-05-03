@@ -17,6 +17,7 @@
 - Create home.html in trades/templates/trades/
 - Migrate DB :`python3 manage.py makemigrations`
   - `python3 manage.py migrate`
+- Migrations must be commited too!  
 
 ## Users and authentication
 - Create a superuser :`python3 manage.py createsuperuser`
