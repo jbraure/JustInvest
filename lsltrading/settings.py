@@ -24,7 +24,7 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 SECRET_KEY = 'hbgf8v*xtb^46dlzgfrgra&c_rl5!0abib7gl)^0t#3rq)i#cw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['justinvest.herokuapp.com', 'localhost']
 
