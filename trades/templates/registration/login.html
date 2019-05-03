@@ -12,8 +12,8 @@
 </div>
 <div class="container centered">
   <div class="row">
-    <div id="portfolio-container" style="width:400px; height:300px;"></div>
-    <div id="pie-container" style="height: 300px;"></div>
+    <div id="portfolio-container" style="width:400px;"></div>
+    <div id="pie-container" style="width:400px;"></div>
   </div>
 </div>
 <script>
@@ -116,9 +116,12 @@
           cursor: 'pointer',
           dataLabels: {
               enabled: true,
-              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-              style: {
-                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+              distance: -50,
+              filter: {
+                  property: 'percentage',
+                  operator: '>',
+                  value: 4
               }
           }
       }
@@ -129,7 +132,6 @@
       data: [{
           name: 'Stocks',
           y: 30,
-          sliced: true,
           selected: true
       },{
           name: 'Long Term Bonds',
