@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.utils import timezone
 from django.views.generic import TemplateView, FormView
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from .models import Trade
 from .forms import TradeForm
@@ -87,3 +87,7 @@ class TradeFormView(SuccessMessageMixin, FormView):
 def trade_id(request, trade_id):
     print('OPEN TRADE NUMBER',trade_id)
     return HttpResponse(trade_id)
+
+def quote(request, ticker):
+    val = 'I Requested quote for ' + ticker
+    return JsonResponse({'request':val})

@@ -43,8 +43,10 @@ urlpatterns = [
 
     #see https://youtu.be/c2hbT0uIcOQ
     #ex: /trades/3/
-    url(r'^trades/(?P<trade_id>\d+)/$',
-        views.trade_id),
+    url(r'^trades/(?P<trade_id>\d+)/$', views.trade_id),
+
+    #ex : /quote/AAPL/
+    url(r'^quote/(?P<ticker>\w+)/$', views.quote),
 
     url(r'^$', HomeView.as_view(), name='home'),
 ]
