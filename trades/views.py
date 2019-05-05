@@ -43,8 +43,7 @@ class TradeListView(TemplateView):
         return self.render_to_response(context)
 
     def update_values(self, trades):
-        """
-        Updates values on the Trade objects
+        """ Updates values on the Trade objects
             - Gets current (last close) price
         """
         start_date = date.today() - timedelta(4)

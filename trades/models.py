@@ -4,7 +4,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Trade(models.Model):
-    format_string = '{:8.2f}'
+    """
+    Class representing a bought asset. Can be a stock, an ETF, etc.
+    """
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
     ticker = models.CharField('Ticker', max_length=20, default='AAPL')
