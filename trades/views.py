@@ -88,6 +88,24 @@ def trade_id(request, trade_id):
     print('OPEN TRADE NUMBER',trade_id)
     return HttpResponse(trade_id)
 
+
+def index_to_unix(row):
+    row.unix = row.unix.value // 10**9
+    return row
+
 def quote(request, ticker):
-    val = 'I Requested quote for ' + ticker
-    return JsonResponse({'request':val})
+    """ Returns a JSON response with quote values for requested ticker.
+        See https://docs.djangoproject.com/en/2.2/ref/request-response/
+    """
+    # look 4 days into the past
+    start_date = date.today() - timedelta(4)
+    stock_data_df = DataReader(ticker, 'yahoo', start=start_date)
+    # add a column in unix timestamp format
+    stock_data_df['unix'] = stock_data_df.index
+    stock_data_df = stock_data_df.apply(index_to_unix, axis='columns')
+    timestamp_and_close_list = stock_data_df.loc[:,['unix', 'Close']].values.tolist()
+    return JsonResponse(timestamp_and_close_list, safe=False)
+    # look at highstock json aapl example
+    # https://www.highcharts.com/samples/data/aapl-c.json
+    # https://www.highcharts.com/samples/data/aapl-ohlcv.json
+    # => date is in epoch format!
