@@ -96,6 +96,10 @@ def index_to_unix(row):
 def quote(request, ticker):
     """ Returns a JSON response with quote values for requested ticker.
         See https://docs.djangoproject.com/en/2.2/ref/request-response/
+        look at highstock json aapl example :
+        https://www.highcharts.com/samples/data/aapl-c.json
+        https://www.highcharts.com/samples/data/aapl-ohlcv.json
+        => date is in epoch format!
     """
     # look 4 days into the past
     start_date = date.today() - timedelta(4)
@@ -105,7 +109,3 @@ def quote(request, ticker):
     stock_data_df = stock_data_df.apply(index_to_unix, axis='columns')
     timestamp_and_close_list = stock_data_df.loc[:,['unix', 'Close']].values.tolist()
     return JsonResponse(timestamp_and_close_list, safe=False)
-    # look at highstock json aapl example
-    # https://www.highcharts.com/samples/data/aapl-c.json
-    # https://www.highcharts.com/samples/data/aapl-ohlcv.json
-    # => date is in epoch format!
