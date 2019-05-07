@@ -3,7 +3,9 @@
   {% block page-content %}
     <div>
       <a href="{% url "home" %}">Portfolio</a> >
-      Stock chart </div>
+      <a href="{% url "trades" %}">Trades</a> >
+      Stock chart
+    </div>
     <h2>Stock Chart : {{ticker}}</h2>
     <br>
     {% if error_message %}
