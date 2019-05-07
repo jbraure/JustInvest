@@ -109,15 +109,24 @@
                     }
                 }, {
                 type: 'flags',
-                data: [{
-                    x: Date.UTC(2019, 1, 1),
-                    title: 'BUY',
-                    text: 'Some event with a description'
-                },
+                  data: [{
+                      x: Date.UTC(2019, 1, 1),
+                      title: 'BUY',
+                      text: 'Shape: "flag"'
+                  },
                 ],
+                color: Highcharts.getOptions().colors[0], // same as onSeries
+                fillColor: Highcharts.getOptions().colors[0],
                 onSeries: 'dataseries',
-                shape: 'circlepin',
-                width: 26
+                width: 26,
+                style: { // text style
+                    color: 'white'
+                },
+                states: {
+                    hover: {
+                        fillColor: '#395C84' // darker
+                    }
+                }
               }]
             });
         });
