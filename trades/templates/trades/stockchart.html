@@ -1,0 +1,10 @@
+{% extends "trades/base.html" %}
+{% block title%} Trades {% endblock title %}
+  {% block page-content %}
+    <div><a href="{% url "home" %}">Portfolio</a> > <a href="{% url "stockchart" %}">Stock chart</a> </div>
+    <h2>Stock Chart</h2>
+  <br>
+{% endblock page-content %}
+{% block footer %}
+  {% include "trades/footer.html" %}
+{% endblock footer %}
