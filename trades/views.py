@@ -105,8 +105,7 @@ def quote(request, ticker):
     look at highstock json aapl example :
     https://www.highcharts.com/samples/data/aapl-c.json
     https://www.highcharts.com/samples/data/aapl-ohlcv.json
-    => date is in epoch format!
-    ex:   1556890200000
+    => date is in epoch format! ex:   1556890200000
     """
     # look 4 days into the past
     start_date = date(2018,1,1)
