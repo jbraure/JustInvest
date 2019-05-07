@@ -102,7 +102,8 @@ def quote(request, ticker):
         => date is in epoch format!
     """
     # look 4 days into the past
-    start_date = date.today() - timedelta(4)
+    start_date = date(2018,1,1)
+    #date.today() - timedelta(100)
     stock_data_df = DataReader(ticker, 'yahoo', start=start_date)
     # add a column in unix timestamp format
     stock_data_df['unix'] = stock_data_df.index
