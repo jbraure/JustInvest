@@ -37,10 +37,6 @@ urlpatterns = [
         StockChartView.as_view(),
         name='stockchart'),
 
-    url(r'^trades/stockchart$',
-        StockChartView.as_view(),
-        name='stockchart'),
-
     url(r'^login/$',
         auth_views.LoginView.as_view(),
         kwargs={'next_page': reverse_lazy('home')},
