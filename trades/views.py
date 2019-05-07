@@ -21,7 +21,7 @@ from pandas_datareader.data import DataReader
 
 class StockChartView(TemplateView):
     template_name = 'trades/stockchart.html'
-    
+
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         return self.render_to_response(context)
@@ -94,7 +94,8 @@ def trade_id(request, trade_id):
 
 
 def index_to_unix(row):
-    row.unix = row.unix.value // 10**9
+    #row.unix = row.unix.value // 10**9
+    row.unix = row.unix.value // 10**6
     return row
 
 def quote(request, ticker):
@@ -105,6 +106,7 @@ def quote(request, ticker):
     https://www.highcharts.com/samples/data/aapl-c.json
     https://www.highcharts.com/samples/data/aapl-ohlcv.json
     => date is in epoch format!
+    ex:   1556890200000
     """
     # look 4 days into the past
     start_date = date(2018,1,1)
@@ -113,5 +115,5 @@ def quote(request, ticker):
     # add a column in unix timestamp format
     stock_data_df['unix'] = stock_data_df.index
     stock_data_df = stock_data_df.apply(index_to_unix, axis='columns')
-    timestamp_and_close_list = stock_data_df.loc[:,['unix', 'Close']].values.tolist()
+    timestamp_and_close_list = stock_data_df.loc[:,['unix', 'Open', 'High', 'Low', 'Close']].values.tolist()
     return JsonResponse(timestamp_and_close_list, safe=False)
