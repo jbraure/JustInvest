@@ -31,8 +31,7 @@ class HomeView(TemplateView):
 class TradeListView(TemplateView):
     template_name = 'trades/list.html'
 
-    @method_decorator(
-        login_required(login_url=reverse_lazy('login')))
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         trades = Trade.objects \
@@ -43,8 +42,9 @@ class TradeListView(TemplateView):
         return self.render_to_response(context)
 
     def update_values(self, trades):
-        """ Updates values on the Trade objects
-            - Gets current (last close) price
+        """
+        Updates values on the Trade objects
+        - Gets current (last close) price
         """
         start_date = date.today() - timedelta(4)
         for trade in trades:
@@ -63,13 +63,11 @@ class TradeFormView(SuccessMessageMixin, FormView):
     success_url = reverse_lazy('trades')
     success_message = "Entry was created successfully"
 
-    @method_decorator(
-        login_required(login_url=reverse_lazy('login')))
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
     def get(self, request, *args, **kwargs):
         return super(TradeFormView, self).get(request, *args, **kwargs)
 
-    @method_decorator(
-        login_required(login_url=reverse_lazy('login')))
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
     def post(self, request, *args, **kwargs):
         return super(TradeFormView, self).post(request, *args, **kwargs)
 
@@ -94,12 +92,13 @@ def index_to_unix(row):
     return row
 
 def quote(request, ticker):
-    """ Returns a JSON response with quote values for requested ticker.
-        See https://docs.djangoproject.com/en/2.2/ref/request-response/
-        look at highstock json aapl example :
-        https://www.highcharts.com/samples/data/aapl-c.json
-        https://www.highcharts.com/samples/data/aapl-ohlcv.json
-        => date is in epoch format!
+    """
+    Returns a JSON response with quote values for requested ticker.
+    See https://docs.djangoproject.com/en/2.2/ref/request-response/
+    look at highstock json aapl example :
+    https://www.highcharts.com/samples/data/aapl-c.json
+    https://www.highcharts.com/samples/data/aapl-ohlcv.json
+    => date is in epoch format!
     """
     # look 4 days into the past
     start_date = date(2018,1,1)
