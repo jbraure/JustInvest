@@ -90,7 +90,6 @@ class StockChartView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        print('####### TICKER ', context['ticker'])
         return self.render_to_response(context)
 
 def index_to_unix(row):
@@ -107,7 +106,7 @@ def quote(request, ticker):
     => date is in epoch format! ex:   1556890200000
     """
     # it seems to work well with this date...
-    start_date = date(2018,1,1)
+    start_date = date(2000,1,1)
     stock_data_df = DataReader(ticker, 'yahoo', start=start_date)
     # add a column in unix timestamp format
     stock_data_df['unix'] = stock_data_df.index
