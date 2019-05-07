@@ -19,13 +19,6 @@ import pandas as pd
 from datetime import date, timedelta
 from pandas_datareader.data import DataReader
 
-class StockChartView(TemplateView):
-    template_name = 'trades/stockchart.html'
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        return self.render_to_response(context)
-
 class HomeView(TemplateView):
     template_name = 'trades/home.html'
 
@@ -92,9 +85,15 @@ def trade_id(request, trade_id):
     print('OPEN TRADE NUMBER',trade_id)
     return HttpResponse(trade_id)
 
+class StockChartView(TemplateView):
+    template_name = 'trades/stockchart.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        print('####### TICKER ', context['ticker'])
+        return self.render_to_response(context)
 
 def index_to_unix(row):
-    #row.unix = row.unix.value // 10**9
     row.unix = row.unix.value // 10**6
     return row
 
@@ -107,9 +106,8 @@ def quote(request, ticker):
     https://www.highcharts.com/samples/data/aapl-ohlcv.json
     => date is in epoch format! ex:   1556890200000
     """
-    # look 4 days into the past
+    # it seems to work well with this date...
     start_date = date(2018,1,1)
-    #date.today() - timedelta(100)
     stock_data_df = DataReader(ticker, 'yahoo', start=start_date)
     # add a column in unix timestamp format
     stock_data_df['unix'] = stock_data_df.index

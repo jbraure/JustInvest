@@ -32,6 +32,11 @@ urlpatterns = [
         TradeFormView.as_view(),
         name='create'),
 
+    # ex: stockchart/ZGLD.SW
+    url(r'^stockchart/(?P<ticker>\S+)$',
+        StockChartView.as_view(),
+        name='stockchart'),
+
     url(r'^trades/stockchart$',
         StockChartView.as_view(),
         name='stockchart'),

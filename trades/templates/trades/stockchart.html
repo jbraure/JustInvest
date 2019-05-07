@@ -1,14 +1,14 @@
 {% extends "trades/base.html" %}
-{% block title%} Trades {% endblock title %}
+{% block title%} {{ticker}} {% endblock title %}
   {% block page-content %}
     <div>
       <a href="{% url "home" %}">Portfolio</a> >
       <a href="{% url "stockchart" %}">Stock chart</a> </div>
-    <h2>Stock Chart</h2>
+    <h2>Stock Chart : {{ticker}}</h2>
     <br>
-    <div id="container" style="height: 800px"></div>
+    <div id="container" style="height: 700px; "></div>
     <script type="text/javascript">
-      $.getJSON('/quote/AAPL.json', function (data) {
+      $.getJSON('/quote/{{ticker}}.json', function (data) {
 
             // split the data set into ohlc and volume
             var ohlc = [],
@@ -49,7 +49,7 @@
                 },
 
                 title: {
-                    text: 'AAPL'
+                    text: '{{ticker}}'
                 },
 
                 yAxis: [{
@@ -85,7 +85,7 @@
 
                 series: [{
                     type: 'candlestick',
-                    name: 'AAPL',
+                    name: '{{ticker}}',
                     data: ohlc,
                     dataGrouping: {
                         units: groupingUnits
