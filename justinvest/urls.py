@@ -46,7 +46,7 @@ urlpatterns = [
     url(r'^trades/(?P<trade_id>\d+)/$', views.trade_id),
 
     #ex : /quote/AAPL.json
-    url(r'^quote/(?P<ticker>\w+).json$', views.quote),
+    url(r'^quote/(?P<ticker>\S+).json$', views.quote),
 
     url(r'^$', HomeView.as_view(), name='home'),
 ]
