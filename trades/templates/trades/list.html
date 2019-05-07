@@ -4,7 +4,10 @@
     <div><a href="{% url "home" %}">Portfolio</a> > <a href="{% url "trades" %}">Trades</a> </div>
   {% if trades %}
     <h2>Your trades ({{ trades|length }})</h2>
-    <div><a href="{% url "create" %}">+ Create a new trade</a></div><br>
+    <div>
+      <a class="btn btn-primary" href="{% url "create" %}" role="button">Insert a new trade</a>
+    </div>
+    <br>
     <table class="table table-dark">
       <thead>
         <tr>
