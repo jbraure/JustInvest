@@ -114,5 +114,5 @@ def quote(request, ticker):
     # add a column in unix timestamp format
     stock_data_df['unix'] = stock_data_df.index
     stock_data_df = stock_data_df.apply(index_to_unix, axis='columns')
-    timestamp_and_close_list = stock_data_df.loc[:,['unix', 'Open', 'High', 'Low', 'Close']].values.tolist()
-    return JsonResponse(timestamp_and_close_list, safe=False)
+    values_list = stock_data_df.loc[:,['unix', 'Open', 'High', 'Low', 'Close', 'Volume']].values.tolist()
+    return JsonResponse(values_list, safe=False)
