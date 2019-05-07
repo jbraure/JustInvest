@@ -6,7 +6,14 @@
       <a href="{% url "stockchart" %}">Stock chart</a> </div>
     <h2>Stock Chart : {{ticker}}</h2>
     <br>
-    <div id="container" style="height: 700px; "></div>
+    {% if error_message %}
+      <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+      </div>
+      <br>
+    {% else %}
+      <div id="container" style="height: 700px; "></div>
+    {% endif %}
     <script type="text/javascript">
       $.getJSON('/quote/{{ticker}}.json', function (data) {
 
