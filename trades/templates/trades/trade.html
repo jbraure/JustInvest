@@ -8,13 +8,22 @@
     </div>
     <h2>Trade detail : {{trade.ticker}}</h2>
     <h3>{{trade.name}}</h3>
-    <p>
-      Asset class : {{trade.asset_class}}<br>
-      Bought : {{trade.purchase_date}}<br>
-      Quantity : {{trade.number_of_shares}}<br>
-      Price paid : {{trade.currency}} {{trade.price_paid}}<br>
-      Current price : {{trade.currency}} {{trade.current_price}}
-    </p>
+    <dl class="row">
+      <dt class="col-sm-2">Asset class</dt>
+      <dd class="col-sm-9">{{trade.asset_class}}</dd>
+
+      <dt class="col-sm-2">Bought</dt>
+      <dd class="col-sm-9">{{trade.purchase_date}}</dd>
+
+      <dt class="col-sm-2">Quantity</dt>
+      <dd class="col-sm-9">{{trade.number_of_shares}}</dd>
+
+      <dt class="col-sm-2">Price paid</dt>
+      <dd class="col-sm-9">{{trade.currency}} {{trade.price_paid}}</dd>
+
+      <dt class="col-sm-2">Current price</dt>
+      <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
+    </dl>
     <br>
     {% if error_message %}
       <div class="alert alert-danger" role="alert">
