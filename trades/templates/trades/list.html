@@ -36,8 +36,18 @@
             <td>{{ trade.purchase_date }}</td>
             <td>{{ trade.sell_date }}</td>
             <td>{{ trade.currency }}</td>
-            <td class='right-align'>{{ trade.price_paid }}</td>
-            <td class='right-align'>{{ trade.get_current_price_str }}</td>
+            <td class='right-align'>
+                  {{ trade.price_paid }}
+            </td>
+            <td class='right-align'>
+              {% if trade.positive %}
+                <span class="badge badge-pill badge-success">
+              {% else %}
+                <span class="badge badge-pill badge-danger">
+              {% endif %}
+                {{ trade.get_current_price_str }}
+              </span>
+            </td>
             <td class='right-align'>{{ trade.get_total_value_str }}</td>
           </tr>
         {% endfor %}
