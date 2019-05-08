@@ -94,7 +94,8 @@
 
                 series: [{
                     type: 'candlestick',
-                    name: 'dataseries',
+                    name: 'toto',
+                    id: 'dataseries',
                     data: ohlc,
                     dataGrouping: {
                         units: groupingUnits
@@ -108,25 +109,24 @@
                         units: groupingUnits
                     }
                 }, {
-                type: 'flags',
+                  type: 'flags',
                   data: [{
                       x: Date.UTC(2018, 11, 2),
                       title: 'BUY',
                       text: 'BUY : 2 dec 2018'
+                  }],
+                  yAxis: 0,
+                  color: Highcharts.getOptions().colors[0], // same as onSeries
+                  fillColor: Highcharts.getOptions().colors[0],
+                  width: 26,
+                  style: { // text style
+                      color: 'white'
                   },
-                ],
-                color: Highcharts.getOptions().colors[0], // same as onSeries
-                fillColor: Highcharts.getOptions().colors[0],
-                onSeries: 'dataseries',
-                width: 26,
-                style: { // text style
-                    color: 'white'
-                },
-                states: {
-                    hover: {
-                        fillColor: '#395C84' // darker
-                    }
-                }
+                  states: {
+                      hover: {
+                          fillColor: '#395C84' // darker
+                      }
+                  }
               }]
             });
         });
