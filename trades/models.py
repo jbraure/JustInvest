@@ -19,6 +19,7 @@ class Trade(models.Model):
     price_paid = models.FloatField('Price paid')
     current_price = models.FloatField('Last close value', default=0)
     total_value = models.FloatField('Total value', default=0)
+    positive = models.BooleanField('positive', default=False)
 
     def __str__(self):
         return self.ticker
