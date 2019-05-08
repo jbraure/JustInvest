@@ -29,7 +29,7 @@
       <tbody>
         {% for trade in trades %}
           <tr class="trades-list {% cycle 'light-gray' 'white' %}">
-            <td><a href="/stockchart/{{ trade.ticker }}" class="badge badge-light">{{ trade.ticker }}</a></td>
+            <td><a href="/trades/{{ trade.id }}" class="badge badge-light">{{ trade.ticker }}</a></td>
             <td>{{ trade.name }}</td>
             <td>{{ trade.asset_class }}</td>
             <td>{{ trade.number_of_shares }}</td>
