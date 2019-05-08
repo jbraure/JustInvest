@@ -61,7 +61,7 @@
             Highcharts.stockChart('container', {
 
                 rangeSelector: {
-                    selected: 4
+                    selected: 5
                 },
 
                 title: {
@@ -119,9 +119,9 @@
                 { // START OF 'BUY' FLAG -------------------------
                   type: 'flags',
                   data: [{
-                      x: Date.UTC(2018, 11, 2),
+                      x: Date.UTC({{buy_year}}, {{buy_month}}, {{buy_day}}),
                       title: 'BUY',
-                      text: 'BUY : 2 dec 2018'
+                      text: 'BUY : {{trade.number_of_shares}} shares at {{trade.currency}} {{trade.price_paid}} per share'
                   }],
                   yAxis: 0,
                   color: 'black', // Highcharts.getOptions().colors[0], // same as onSeries

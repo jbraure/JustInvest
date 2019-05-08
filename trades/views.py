@@ -103,6 +103,9 @@ class TradeDetailView(TemplateView):
         trade_id = context['trade_id']
         trade = Trade.objects.get(pk=trade_id)
         context['trade'] = trade
+        context['buy_year'] = trade.purchase_date.year
+        context['buy_month'] = trade.purchase_date.month-1
+        context['buy_day'] = trade.purchase_date.day
         return self.render_to_response(context)
 
 class StockChartView(TemplateView):
