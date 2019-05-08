@@ -1,6 +1,5 @@
+## Webapp url : https://justinvest.herokuapp.com/
 # Steps done :
-
-[TOC]
 
 ## Django project creation
 - Create Django project in heroku/ folder : `django-admin startproject justinvest`
@@ -24,7 +23,7 @@
   - With my usual credentials
 - Check that Admin console is functional. It should be, at this point.
 - Create base.html, footer.html, home.html
-- Adds login and logout
+- Add login and logout
 
 ## Data display as list
 - Open database with "DB Bowser for SQLite" and insert some records.
@@ -61,7 +60,7 @@ https://justinvest.herokuapp.com/ | https://git.heroku.com/justinvest.git
 - And if needed : `heroku apps:destroy` to start over.
 - /!\ locations of files matter, if at root or just below.
 - Then configure the database on heroku : Put the credentials in environement / config vars. See link (2)(9)
-- If needed, run `heroku run python manage.py migrate` to migrate the remote database.
+- If needed, run `heroku run python manage.py migrate` to migrate the remote database. (The migration files must be committed and pushed!)
 - Run `heroku run python manage.py createsuperuser` to create the Django superuser on the remote database.
 
 ## Admin console customization
