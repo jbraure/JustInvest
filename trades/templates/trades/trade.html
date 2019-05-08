@@ -4,9 +4,16 @@
     <div>
       <a href="{% url "home" %}">Portfolio</a> >
       <a href="{% url "trades" %}">Trades</a> >
-      Stock chart
+      Trade detail
     </div>
-    <h2>Stock Chart : {{ticker}}</h2>
+    <h2>Trade detail : {{trade.ticker}}</h2>
+    <h3>{{trade.name}}</h3>
+    <p>
+      Asset class : {{trade.asset_class}}<br>
+      Bought : {{trade.purchase_date}}<br>
+      Quantity : {{trade.number_of_shares}}<br>
+      Price paid : {{trade.price_paid}}
+    </p>
     <br>
     {% if error_message %}
       <div class="alert alert-danger" role="alert">
@@ -17,7 +24,7 @@
       <div id="container" style="height: 700px; "></div>
     {% endif %}
     <script type="text/javascript">
-      $.getJSON('/quote/{{ticker}}.json', function (data) {
+      $.getJSON('/quote/{{trade.ticker}}.json', function (data) {
 
             // split the data set into ohlc and volume
             var ohlc = [],
@@ -58,7 +65,7 @@
                 },
 
                 title: {
-                    text: '{{ticker}}'
+                    text: '{{trade.ticker}}'
                 },
 
                 yAxis: [{
@@ -109,6 +116,26 @@
                         units: groupingUnits
                     }
                 },
+                { // START OF 'BUY' FLAG -------------------------
+                  type: 'flags',
+                  data: [{
+                      x: Date.UTC(2018, 11, 2),
+                      title: 'BUY',
+                      text: 'BUY : 2 dec 2018'
+                  }],
+                  yAxis: 0,
+                  color: 'black', // Highcharts.getOptions().colors[0], // same as onSeries
+                  fillColor: 'green', // Highcharts.getOptions().colors[0],
+                  width: 26,
+                  style: { // text style
+                      color: 'white'
+                  },
+                  states: {
+                      hover: {
+                          fillColor: 'green' // darker
+                      }
+                  }
+              }// END OF 'BUY' FLAG -------------------------------
               ]
             });
         });

@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
-from trades.views import HomeView, TradeListView, TradeFormView, StockChartView
+from trades.views import HomeView, TradeListView
+from trades.views import TradeFormView, StockChartView
+from trades.views import TradeDetailView
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
 from trades import views
@@ -31,6 +33,11 @@ urlpatterns = [
     url(r'^trades/create$',
         TradeFormView.as_view(),
         name='create'),
+
+    # ex: trades/7/
+    url(r'^trades/(?P<trade_id>\d+)/?$',
+        TradeDetailView.as_view(),
+        name='detail'),
 
     # ex: stockchart/ZGLD.SW
     url(r'^stockchart/(?P<ticker>\S+)$',

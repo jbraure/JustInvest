@@ -93,6 +93,18 @@ def is_ticker_existing(ticker):
     except:
         return False
 
+class TradeDetailView(TemplateView):
+    template_name = 'trades/trade.html'
+
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        # load trade with id
+        trade_id = context['trade_id']
+        trade = Trade.objects.get(pk=trade_id)
+        context['trade'] = trade
+        return self.render_to_response(context)
+
 class StockChartView(TemplateView):
     template_name = 'trades/stockchart.html'
 
