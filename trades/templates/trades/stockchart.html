@@ -108,7 +108,8 @@
                     dataGrouping: {
                         units: groupingUnits
                     }
-                }, {
+                },
+                { // START OF 'BUY' FLAG -------------------------
                   type: 'flags',
                   data: [{
                       x: Date.UTC(2018, 11, 2),
@@ -116,18 +117,19 @@
                       text: 'BUY : 2 dec 2018'
                   }],
                   yAxis: 0,
-                  color: Highcharts.getOptions().colors[0], // same as onSeries
-                  fillColor: Highcharts.getOptions().colors[0],
+                  color: 'black', // Highcharts.getOptions().colors[0], // same as onSeries
+                  fillColor: 'green', // Highcharts.getOptions().colors[0],
                   width: 26,
                   style: { // text style
                       color: 'white'
                   },
                   states: {
                       hover: {
-                          fillColor: '#395C84' // darker
+                          fillColor: 'green' // darker
                       }
                   }
-              }]
+              }// END OF 'BUY' FLAG -------------------------------
+              ]
             });
         });
 
