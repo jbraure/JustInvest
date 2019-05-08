@@ -99,7 +99,6 @@ class StockChartView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         ticker = context['ticker']
-        print('TICKER IS : ', ticker)
         if not is_ticker_existing(ticker):
             context['error_message'] = 'No data could be found for ticker ' + ticker
         return self.render_to_response(context)
@@ -119,7 +118,7 @@ def quote(request, ticker):
     => date is in epoch format! ex:   1556890200000
     """
     # it seems to work well with this date...
-    start_date = date(1990,1,1) #1990
+    start_date = date(2017,1,1)
     stock_data_df = DataReader(ticker, 'yahoo', start=start_date)
     # add a column in unix timestamp format
     stock_data_df['unix'] = stock_data_df.index
