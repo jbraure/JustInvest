@@ -14,6 +14,15 @@ ACTIONS = (
     ('SELL', 'Sell'),
  )
 
+ASSET_CLASSES = (
+    ('STOCK', 'Stock'),
+    ('GOLD', 'Gold'),
+    ('LONG_BONDS', 'Long-term bonds'),
+    ('MED_BONDS', 'Medium-term bonds'),
+    ('SHORT_BONDS', 'Short-term bonds'),
+    ('OTHER', 'Other'),
+)
+
 class Trade(models.Model):
     """
     Class representing a bought asset. Can be a stock, an ETF, etc.
@@ -22,7 +31,7 @@ class Trade(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
     ticker = models.CharField('Ticker', max_length=20, default='AAPL')
     name = models.CharField('Name', max_length=50, default='Apple')
-    asset_class = models.CharField('Asset class', max_length=50, default='Stock')
+    asset_class = models.CharField('Asset class', max_length=50, default='STOCK', choices=ASSET_CLASSES)
     currency = models.CharField('Currency', max_length=3, default='USD', choices=CURRENCIES)
     action = models.CharField('Action', max_length=4, default='BUY', choices=ACTIONS)
     trade_date = models.DateTimeField('Date', default=timezone.now)
