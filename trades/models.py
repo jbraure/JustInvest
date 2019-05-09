@@ -29,3 +29,12 @@ class Trade(models.Model):
 
     def get_total_value_str(self):
         return '{:8.2f}'.format(self.total_value)
+
+class BalanceHistory(models.Model):
+    """
+    Class representing an item of portfolio balance history,
+    typically one item a day will be stored.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
+    total_value_chf = models.FloatField('Total value in CHF', default=0)
+    date = models.DateField('Date purchased', default=timezone.now)
