@@ -39,7 +39,7 @@
                   {{ trade.price_paid }}
             </td>
             <td class='right-align'>
-              {% if trade.is_buy() %}
+              {% if trade.is_buy %}
                 {% if trade.positive %}
                   <span class="badge badge-pill badge-success">
                 {% else %}
@@ -50,7 +50,7 @@
               {% endif %}
             </td>
             <td class='right-align'>
-              {% if trade.is_buy() %}
+              {% if trade.is_buy %}
                 {{ trade.get_total_value_str }}
               {% endif %}
             </td>
