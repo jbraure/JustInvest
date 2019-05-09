@@ -5,5 +5,5 @@ class TradeForm(ModelForm):
     class Meta:
         model = Trade
         fields = ['ticker', 'name', 'asset_class', 'currency', 'purchase_date', \
-            'number_of_shares', 'price_paid']
+            'action', 'number_of_shares', 'price_paid']
 # add form validation for ticker name

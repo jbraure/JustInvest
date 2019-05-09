@@ -19,8 +19,9 @@
           <th>Asset class</th>
           <th>Nb of shares</th>
           <th>Date</th>
+          <th>Action</th>
           <th>Currency</th>
-          <th class='right-align'>Price paid</th>
+          <th class='right-align'>Price paid/sold</th>
           <th class='right-align'>Current price</th>
           <th class='right-align'>Total value</th>
         </tr>
@@ -33,6 +34,7 @@
             <td>{{ trade.asset_class }}</td>
             <td>{{ trade.number_of_shares }}</td>
             <td>{{ trade.purchase_date }}</td>
+            <td>{{ trade.action }}</td>
             <td>{{ trade.currency }}</td>
             <td class='right-align'>
                   {{ trade.price_paid }}

@@ -9,6 +9,11 @@ CURRENCIES = (
     ('USD', 'USD : US Dollar'),
  )
 
+ACTIONS = (
+    ('BUY', 'Buy'),
+    ('SELL', 'Sell'),
+ )
+
 class Trade(models.Model):
     """
     Class representing a bought asset. Can be a stock, an ETF, etc.
@@ -18,7 +23,8 @@ class Trade(models.Model):
     ticker = models.CharField('Ticker', max_length=20, default='AAPL')
     name = models.CharField('Name', max_length=50, default='Apple')
     asset_class = models.CharField('Asset class', max_length=50, default='Stock')
-    currency = models.CharField('Currency', max_length=5, default='USD', choices=CURRENCIES)
+    currency = models.CharField('Currency', max_length=3, default='USD', choices=CURRENCIES)
+    action = models.CharField('Action', max_length=4, default='BUY', choices=ACTIONS)
     purchase_date = models.DateTimeField('Date purchased', default=timezone.now)
     number_of_shares = models.IntegerField('Number of shares', default=1)
     price_paid = models.FloatField('Price paid')
