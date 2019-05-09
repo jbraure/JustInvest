@@ -31,7 +31,7 @@
           <tr class="trades-list {% cycle 'light-gray' 'white' %}">
             <td><a href="/trades/{{ trade.id }}" class="badge badge-light">{{ trade.ticker }}</a></td>
             <td>{{ trade.name }}</td>
-            <td>{{ trade.asset_class }}</td>
+            <td>{{ trade.get_asset_class_display }}</td>
             <td>{{ trade.number_of_shares }}</td>
             <td>{{ trade.trade_date }}</td>
             <td>{{ trade.action }}</td>

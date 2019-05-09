@@ -10,13 +10,13 @@
     <h3>{{trade.name}}</h3>
     <dl class="row">
       <dt class="col-sm-2">Asset class</dt>
-      <dd class="col-sm-9">{{trade.asset_class}}</dd>
+      <dd class="col-sm-9">{{trade.get_asset_class_display}}</dd>
 
       <dt class="col-sm-2">Date</dt>
       <dd class="col-sm-9">{{trade.trade_date}}</dd>
 
       <dt class="col-sm-2">Action</dt>
-      <dd class="col-sm-9">{{trade.action}}</dd>
+      <dd class="col-sm-9">{{trade.get_action_display}}</dd>
 
       <dt class="col-sm-2">Quantity</dt>
       <dd class="col-sm-9">{{trade.number_of_shares}}</dd>
