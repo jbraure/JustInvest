@@ -25,7 +25,7 @@ class Trade(models.Model):
     asset_class = models.CharField('Asset class', max_length=50, default='Stock')
     currency = models.CharField('Currency', max_length=3, default='USD', choices=CURRENCIES)
     action = models.CharField('Action', max_length=4, default='BUY', choices=ACTIONS)
-    purchase_date = models.DateTimeField('Date purchased', default=timezone.now)
+    trade_date = models.DateTimeField('Date', default=timezone.now)
     number_of_shares = models.IntegerField('Number of shares', default=1)
     price_paid = models.FloatField('Price paid')
     current_price = models.FloatField('Last close value', default=0)

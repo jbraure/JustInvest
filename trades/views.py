@@ -32,7 +32,7 @@ class TradeListView(TemplateView):
         context = self.get_context_data(**kwargs)
         trades = Trade.objects \
             .filter(user=request.user) \
-            .order_by('-purchase_date')
+            .order_by('-trade_date')
         self.update_values(trades)
         context['trades'] = list(trades)
         return self.render_to_response(context)
@@ -84,9 +84,9 @@ class TradeDetailView(TemplateView):
         trade_id = context['trade_id']
         trade = Trade.objects.get(pk=trade_id)
         context['trade'] = trade
-        context['buy_year'] = trade.purchase_date.year
-        context['buy_month'] = trade.purchase_date.month-1
-        context['buy_day'] = trade.purchase_date.day
+        context['buy_year'] = trade.trade_date.year
+        context['buy_month'] = trade.trade_date.month-1
+        context['buy_day'] = trade.trade_date.day
         if trade.currency == 'USD':
             context['total_value_in_chf'] = finance.usd_to_chf(trade.total_value)
         else:

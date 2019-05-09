@@ -33,21 +33,27 @@
             <td>{{ trade.name }}</td>
             <td>{{ trade.asset_class }}</td>
             <td>{{ trade.number_of_shares }}</td>
-            <td>{{ trade.purchase_date }}</td>
+            <td>{{ trade.trade_date }}</td>
             <td>{{ trade.action }}</td>
             <td class='right-align'>
                   {{ trade.price_paid }}
             </td>
             <td class='right-align'>
-              {% if trade.positive %}
-                <span class="badge badge-pill badge-success">
-              {% else %}
-                <span class="badge badge-pill badge-danger">
+              {% if trade.action == 'BUY' %}
+                {% if trade.positive %}
+                  <span class="badge badge-pill badge-success">
+                {% else %}
+                  <span class="badge badge-pill badge-danger">
+                {% endif %}
+                  {{ trade.get_current_price_str }}
+                </span>
               {% endif %}
-                {{ trade.get_current_price_str }}
-              </span>
             </td>
-            <td class='right-align'>{{ trade.get_total_value_str }}</td>
+            <td class='right-align'>
+              {% if trade.action == 'BUY' %}
+                {{ trade.get_total_value_str }}
+              {% endif %}
+            </td>
             <td>{{ trade.currency }}</td>
           </tr>
         {% endfor %}
