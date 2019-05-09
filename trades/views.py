@@ -1,23 +1,21 @@
-# from django.http import HttpResponseRedirect
+# Third party imports
+import pandas as pd
+from pandas_datareader.data import DataReader
 from django.shortcuts import get_object_or_404, render
-
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
-# from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views import generic
 from django.utils import timezone
 from django.views.generic import TemplateView, FormView
 from django.http import HttpResponse, JsonResponse
 
+# Local application imports
 from .models import Trade
 from .forms import TradeForm
+from .lib.justinvest import finance
 
-
-import pandas as pd
-from datetime import date, timedelta
-from pandas_datareader.data import DataReader
 
 class HomeView(TemplateView):
     template_name = 'trades/home.html'
@@ -42,14 +40,11 @@ class TradeListView(TemplateView):
 
     def update_values(self, trades):
         """
-        Updates values on the Trade objects
-        - Gets current (last close) price
+        Updates values on the Trade objects : current (last close) price,
+        positivity (value raised)
         """
-        start_date = date.today() - timedelta(4)
         for trade in trades:
-            stock_data = DataReader(trade.ticker, 'yahoo', start=start_date)
-            # last close price
-            last_close = float(stock_data.tail(1)['Close'])
+            last_close = finance.get_last_close(trade.ticker)
             trade.current_price = last_close
             # current asset values
             trade.total_value = trade.number_of_shares * last_close
@@ -83,16 +78,7 @@ class TradeFormView(SuccessMessageMixin, FormView):
 # ex: /trades/3/
 # url(r'^trades/<int:trade_id>', views.trade_id),
 def trade_id(request, trade_id):
-    print('OPEN TRADE NUMBER',trade_id)
     return HttpResponse(trade_id)
-
-# TODO move this elsewhere
-def is_ticker_existing(ticker):
-    try:
-        DataReader(ticker, 'yahoo', start=date(2019,1,1))
-        return True
-    except:
-        return False
 
 class TradeDetailView(TemplateView):
     template_name = 'trades/trade.html'
@@ -115,14 +101,11 @@ class StockChartView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         ticker = context['ticker']
-        if not is_ticker_existing(ticker):
+        if not finance.is_ticker_existing(ticker):
             context['error_message'] = 'No data could be found for ticker ' + ticker
         return self.render_to_response(context)
 
-# TODO move this elsewhere
-def index_to_unix(row):
-    row.unix = row.unix.value // 10**6
-    return row
+
 
 def quote(request, ticker):
     """
@@ -133,11 +116,5 @@ def quote(request, ticker):
     https://www.highcharts.com/samples/data/aapl-ohlcv.json
     => date is in epoch format! ex:   1556890200000
     """
-    # it seems to work well with this date...
-    start_date = date(2017,1,1)
-    stock_data_df = DataReader(ticker, 'yahoo', start=start_date)
-    # add a column in unix timestamp format
-    stock_data_df['unix'] = stock_data_df.index
-    stock_data_df = stock_data_df.apply(index_to_unix, axis='columns')
-    values_list = stock_data_df.loc[:,['unix', 'Open', 'High', 'Low', 'Close', 'Volume']].values.tolist()
+    values_list = finance.get_ohlc_quote(ticker)
     return JsonResponse(values_list, safe=False)
