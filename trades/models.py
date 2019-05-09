@@ -25,7 +25,7 @@ ASSET_CLASSES = (
 
 class Trade(models.Model):
     """
-    Class representing a bought asset. Can be a stock, an ETF, etc.
+    Class representing a buy or sell action.
     """
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
@@ -56,8 +56,9 @@ class Trade(models.Model):
 class BalanceHistory(models.Model):
     """
     Class representing an item of portfolio balance history,
-    typically one item a day will be stored.
+    typically one item per day will be stored to monitor the
+    portfolio performance.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
     total_value_chf = models.FloatField('Total value in CHF', default=0)
-    date = models.DateField('Date purchased', default=timezone.now)
+    date = models.DateField('Date', default=timezone.now)
