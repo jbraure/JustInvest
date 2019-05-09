@@ -9,15 +9,17 @@
   {% endif %}
   <div><a href="{% url "home" %}">Portfolio</a> >
     <a href="{% url "trades" %}">Trades</a> >
-    Create a new trade
+    Enter a new trade
   </div>
 
-  <h2>Create a new Trade</h2>
-  <form action="{% url "create" %}" method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" value="Create">
-  </form><br>
+  <h2>Enter a new Trade</h2>
+  <div class="narrow-centered">
+    <form action="{% url "create" %}" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form><br>
+  </div>
 {% endblock page-content %}
 {% block footer %}
   {% include "trades/footer.html" %}
