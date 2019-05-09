@@ -14,6 +14,9 @@ def is_ticker_existing(ticker):
         - True if the given ticker is found on yahoo finance
         - False otherwise
     """
+    if len(ticker) < 3:
+        return False
+
     try:
         DataReader(ticker, 'yahoo', start=date(2019,1,1))
         return True
