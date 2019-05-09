@@ -64,10 +64,8 @@ def eur_to_chf(eur):
 def usd_to_chf(usd):
     # USD is the base currency you want to use
     url = EXCHANGE_URL + 'USD'
-    print('URL USED FOR EXCHANGE: ', url)
     response = requests.get(url)
     data = response.json()
     one_dollar_in_chf = data['rates']['CHF']
-    print('ONE $ IS IN CHF: ', one_dollar_in_chf)
     converted = usd * one_dollar_in_chf
     return converted

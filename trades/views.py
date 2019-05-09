@@ -1,5 +1,4 @@
 # Third party imports
-import pandas as pd
 from pandas_datareader.data import DataReader
 from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
@@ -74,11 +73,6 @@ class TradeFormView(SuccessMessageMixin, FormView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-
-# ex: /trades/3/
-# url(r'^trades/<int:trade_id>', views.trade_id),
-def trade_id(request, trade_id):
-    return HttpResponse(trade_id)
 
 class TradeDetailView(TemplateView):
     template_name = 'trades/trade.html'

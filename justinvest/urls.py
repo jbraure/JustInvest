@@ -53,10 +53,6 @@ urlpatterns = [
         auth_views.LogoutView.as_view(),
         name='logout'),
 
-    #see https://youtu.be/c2hbT0uIcOQ
-    #ex: /trades/3/
-    url(r'^trades/(?P<trade_id>\d+)/$', views.trade_id),
-
     #ex : /quote/AAPL.json
     url(r'^quote/(?P<ticker>\S+).json$', views.quote),
 
