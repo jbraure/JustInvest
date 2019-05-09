@@ -3,6 +3,12 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+CURRENCIES = (
+    ('CHF', 'CHF : Swiss Franc'),
+    ('EUR', 'EUR : Euro'),
+    ('USD', 'USD : US Dollar'),
+ )
+
 class Trade(models.Model):
     """
     Class representing a bought asset. Can be a stock, an ETF, etc.
@@ -12,7 +18,7 @@ class Trade(models.Model):
     ticker = models.CharField('Ticker', max_length=20, default='AAPL')
     name = models.CharField('Name', max_length=50, default='Apple')
     asset_class = models.CharField('Asset class', max_length=50, default='Stock')
-    currency = models.CharField('Currency', max_length=5, default='USD')
+    currency = models.CharField('Currency', max_length=5, default='USD', choices=CURRENCIES)
     purchase_date = models.DateTimeField('Date purchased', default=timezone.now)
     sell_date = models.DateTimeField('Date sold', auto_now=False, default=None, blank=True, null=True)
     number_of_shares = models.IntegerField('Number of shares', default=1)
