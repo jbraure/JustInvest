@@ -41,6 +41,9 @@ class Trade(models.Model):
     def get_total_value_str(self):
         return '{:8.2f}'.format(self.total_value)
 
+    def is_buy(self):
+        return self.action == 'BUY'
+
 class BalanceHistory(models.Model):
     """
     Class representing an item of portfolio balance history,

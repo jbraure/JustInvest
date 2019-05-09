@@ -12,21 +12,26 @@
       <dt class="col-sm-2">Asset class</dt>
       <dd class="col-sm-9">{{trade.asset_class}}</dd>
 
-      <dt class="col-sm-2">Bought</dt>
+      <dt class="col-sm-2">Date</dt>
       <dd class="col-sm-9">{{trade.trade_date}}</dd>
+
+      <dt class="col-sm-2">Action</dt>
+      <dd class="col-sm-9">{{trade.action}}</dd>
 
       <dt class="col-sm-2">Quantity</dt>
       <dd class="col-sm-9">{{trade.number_of_shares}}</dd>
 
-      <dt class="col-sm-2">Price paid</dt>
+      <dt class="col-sm-2">Price</dt>
       <dd class="col-sm-9">{{trade.currency}} {{trade.price_paid}}</dd>
 
-      <dt class="col-sm-2">Current price</dt>
-      <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
+      {% if trade.is_buy %}
+        <dt class="col-sm-2">Current price</dt>
+        <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
 
-      {% if trade.currency != 'CHF' %}
-      <dt class="col-sm-2">Total in CHF</dt>
-      <dd class="col-sm-9">{{total_value_in_chf}}</dd>
+        {% if trade.currency != 'CHF' %}
+        <dt class="col-sm-2">Total in CHF</dt>
+        <dd class="col-sm-9">{{total_value_in_chf}}</dd>
+        {% endif %}
       {% endif %}
     </dl>
     <br>
@@ -131,26 +136,49 @@
                         units: groupingUnits
                     }
                 },
+                {% if trade.is_buy %}
+                  { // START OF 'BUY' FLAG -------------------------
+                    type: 'flags',
+                    data: [{
+                        x: Date.UTC({{buy_year}}, {{buy_month}}, {{buy_day}}),
+                        title: 'BUY',
+                        text: 'BUY : {{trade.number_of_shares}} shares at {{trade.currency}} {{trade.price_paid}} per share'
+                    }],
+                    yAxis: 0,
+                    color: 'black', // Highcharts.getOptions().colors[0], // same as onSeries
+                    fillColor: 'green', // Highcharts.getOptions().colors[0],
+                    width: 26,
+                    style: { // text style
+                        color: 'white'
+                    },
+                    states: {
+                        hover: {
+                            fillColor: 'green' // darker
+                        }
+                    }
+                }// END OF 'BUY' FLAG -------------------------------
+              {% else %}
                 { // START OF 'BUY' FLAG -------------------------
                   type: 'flags',
                   data: [{
                       x: Date.UTC({{buy_year}}, {{buy_month}}, {{buy_day}}),
-                      title: 'BUY',
-                      text: 'BUY : {{trade.number_of_shares}} shares at {{trade.currency}} {{trade.price_paid}} per share'
+                      title: 'SELL',
+                      text: 'SELL : {{trade.number_of_shares}} shares'
                   }],
                   yAxis: 0,
                   color: 'black', // Highcharts.getOptions().colors[0], // same as onSeries
-                  fillColor: 'green', // Highcharts.getOptions().colors[0],
+                  fillColor: 'orange', // Highcharts.getOptions().colors[0],
                   width: 26,
                   style: { // text style
                       color: 'white'
                   },
                   states: {
                       hover: {
-                          fillColor: 'green' // darker
+                          fillColor: 'orange' // darker
                       }
                   }
               }// END OF 'BUY' FLAG -------------------------------
+              {% endif %}
               ]
             });
         });
