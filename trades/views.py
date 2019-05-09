@@ -93,6 +93,11 @@ class TradeDetailView(TemplateView):
         context['buy_year'] = trade.purchase_date.year
         context['buy_month'] = trade.purchase_date.month-1
         context['buy_day'] = trade.purchase_date.day
+        if trade.currency == 'USD':
+            context['total_value_in_chf'] = finance.usd_to_chf(trade.total_value)
+        else:
+            if trade.currency == 'EUR':
+                context['total_value_in_chf'] = finance.eur_to_chf(trade.total_value)
         return self.render_to_response(context)
 
 class StockChartView(TemplateView):

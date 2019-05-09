@@ -23,6 +23,11 @@
 
       <dt class="col-sm-2">Current price</dt>
       <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
+
+      {% if trade.currency != 'CHF' %}
+      <dt class="col-sm-2">Total in CHF</dt>
+      <dd class="col-sm-9">{{total_value_in_chf}}</dd>
+      {% endif %}
     </dl>
     <br>
     {% if error_message %}

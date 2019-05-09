@@ -1,10 +1,12 @@
 # Standard library imports
 from datetime import date, timedelta
+import requests
 
 # Third party imports
 import pandas as pd
 from pandas_datareader.data import DataReader
 
+EXCHANGE_URL = 'https://api.exchangerate-api.com/v4/latest/'
 
 def is_ticker_existing(ticker):
     """
@@ -49,3 +51,23 @@ def get_last_close(ticker):
     stock_data = DataReader(ticker, 'yahoo', start=start_date)
     last_close = float(stock_data.tail(1)['Close'])
     return last_close
+
+def eur_to_chf(eur):
+    # USD is the base currency you want to use
+    url = EXCHANGE_URL + 'EUR'
+    response = requests.get(url)
+    data = response.json()
+    one_eur_in_chf = data['rates']['CHF']
+    converted = eur * one_eur_in_chf
+    return converted
+
+def usd_to_chf(usd):
+    # USD is the base currency you want to use
+    url = EXCHANGE_URL + 'USD'
+    print('URL USED FOR EXCHANGE: ', url)
+    response = requests.get(url)
+    data = response.json()
+    one_dollar_in_chf = data['rates']['CHF']
+    print('ONE $ IS IN CHF: ', one_dollar_in_chf)
+    converted = usd * one_dollar_in_chf
+    return converted
