@@ -17,6 +17,7 @@ ACTIONS = (
 ASSET_CLASSES = (
     ('STOCK', 'Stock'),
     ('GOLD', 'Gold'),
+    ('CASH', 'Cash'),
     ('LONG_BONDS', 'Long-term bonds'),
     ('MED_BONDS', 'Medium-term bonds'),
     ('SHORT_BONDS', 'Short-term bonds'),
