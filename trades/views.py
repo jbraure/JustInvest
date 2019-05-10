@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.utils import timezone
 from django.views.generic import TemplateView, FormView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse, JsonResponse
 
 # Local application imports
@@ -55,7 +56,6 @@ class TradeFormView(SuccessMessageMixin, FormView):
     template_name = 'trades/create.html'
     form_class = TradeForm
     success_url = reverse_lazy('trades')
-    success_message = "Entry was created successfully"
 
     @method_decorator(login_required(login_url=reverse_lazy('login')))
     def get(self, request, *args, **kwargs):
@@ -78,6 +78,10 @@ class TradeFormView(SuccessMessageMixin, FormView):
         # TODO create or update an AssetClass record
         # TODO create or update an Holdings record
         self.object.save()
+
+class TradeDelete(DeleteView):
+    model = Trade
+    success_url = reverse_lazy('trades')
 
 class TradeDetailView(TemplateView):
     template_name = 'trades/trade.html'

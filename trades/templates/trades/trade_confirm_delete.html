@@ -1,0 +1,22 @@
+{% extends "trades/base.html" %}
+{% block title%}JustInvest{% endblock title %}
+  {% block page-content %}
+    <div>
+      <a href="{% url "home" %}">Portfolio</a> >
+      <a href="{% url "trades" %}">Trades</a>
+    </div>
+
+    <h1>Delete a trade</h1>
+
+    <p>Are you sure you want to delete the trade : {{ trade }}?</p>
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Yes, delete.">
+    </form>
+
+  <br>
+{% endblock page-content %}
+{% block footer %}
+  {% include "trades/footer.html" %}
+{% endblock footer %}

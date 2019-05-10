@@ -34,6 +34,10 @@ urlpatterns = [
         TradeFormView.as_view(),
         name='create'),
 
+    path(r'trades/<int:pk>/delete/',
+    views.TradeDelete.as_view(),
+    name='trade_delete'),
+
     # ex: trades/7/
     url(r'^trades/(?P<trade_id>\d+)/?$',
         TradeDetailView.as_view(),
