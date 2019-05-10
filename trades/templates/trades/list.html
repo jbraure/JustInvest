@@ -24,6 +24,8 @@
           <th class='right-align'>Current price</th>
           <th class='right-align'>Total value</th>
           <th>Currency</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -55,6 +57,8 @@
               {% endif %}
             </td>
             <td>{{ trade.currency }}</td>
+            <td>Modify</td>
+            <td>Delete</td>
           </tr>
         {% endfor %}
       </tbody>
