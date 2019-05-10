@@ -33,6 +33,13 @@
         <dd class="col-sm-9">{{total_value_in_chf}}</dd>
         {% endif %}
       {% endif %}
+
+      <dt class="col-sm-2">
+        <span class="badge badge-pill badge-danger">
+          <a href="/trades/{{ trade.id }}/delete/" alt="Delete">Delete</a>
+        </span>
+      </dt>
+      
     </dl>
     <br>
     {% if error_message %}

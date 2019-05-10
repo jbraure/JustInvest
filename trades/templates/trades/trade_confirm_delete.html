@@ -6,9 +6,9 @@
       <a href="{% url "trades" %}">Trades</a>
     </div>
 
-    <h1>Delete a trade</h1>
+    <h2>Delete a trade</h2>
 
-    <p>Are you sure you want to delete the trade : {{ trade }}?</p>
+    <p>Are you sure you want to delete the trade : {{ trade.ticker }} : {{ trade.name }} (id = {{trade.id}})?</p>
 
     <form action="" method="POST">
       {% csrf_token %}
