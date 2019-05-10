@@ -72,6 +72,9 @@ class TradeFormView(SuccessMessageMixin, FormView):
     def _save_with_user(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
+        print('#### HERE WE JUST ADDED A TRADE ! ticker = '+self.object.ticker)
+        print('   quantity = '+str(self.object.number_of_shares))
+        # TODO create or update an AssetClass record
         self.object.save()
 
 class TradeDetailView(TemplateView):
