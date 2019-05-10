@@ -15,29 +15,29 @@
       <thead>
         <tr>
           <th>Ticker</th>
-          <th>Name</th>
-          <th>Asset class</th>
-          <th>Nb of shares</th>
-          <th>Date</th>
+          <th class='hide-when-small'>Name</th>
+          <th class='hide-when-small'>Asset class</th>
+          <th class='hide-when-small'>Nb of shares</th>
+          <th class='hide-when-small'>Date</th>
           <th>Action</th>
-          <th class='right-align'>Price paid/sold</th>
+          <th class='hide-when-small right-align'>Price paid/sold</th>
           <th class='right-align'>Current price</th>
-          <th class='right-align'>Total value</th>
-          <th>Currency</th>
-          <th></th>
-          <th></th>
+          <th class='hide-when-small right-align'>Total value</th>
+          <th class='hide-when-small'>Currency</th>
+          <th class='hide-when-small'></th>
+          <th class='hide-when-small'></th>
         </tr>
       </thead>
       <tbody>
         {% for trade in trades %}
           <tr class="trades-list {% cycle 'light-gray' 'white' %}">
             <td><a href="/trades/{{ trade.id }}" class="badge badge-light">{{ trade.ticker }}</a></td>
-            <td>{{ trade.name }}</td>
-            <td>{{ trade.get_asset_class_display }}</td>
-            <td>{{ trade.number_of_shares }}</td>
-            <td>{{ trade.trade_date }}</td>
+            <td class='hide-when-small'>{{ trade.name }}</td>
+            <td class='hide-when-small'>{{ trade.get_asset_class_display }}</td>
+            <td class='hide-when-small'>{{ trade.number_of_shares }}</td>
+            <td class='hide-when-small'>{{ trade.trade_date }}</td>
             <td>{{ trade.action }}</td>
-            <td class='right-align'>
+            <td class='hide-when-small right-align'>
                   {{ trade.price_paid }}
             </td>
             <td class='right-align'>
@@ -51,14 +51,14 @@
                 </span>
               {% endif %}
             </td>
-            <td class='right-align'>
+            <td class='hide-when-small right-align'>
               {% if trade.is_buy %}
                 {{ trade.get_total_value_str }}
               {% endif %}
             </td>
-            <td>{{ trade.currency }}</td>
-            <td>Modify</td>
-            <td>
+            <td class='hide-when-small'>{{ trade.currency }}</td>
+            <td class='hide-when-small'>Modify</td>
+            <td class='hide-when-small'>
               <span class="badge badge-pill badge-danger">
                 <a href="/trades/{{ trade.id }}/delete/" alt="Delete">x</a>
               </span>

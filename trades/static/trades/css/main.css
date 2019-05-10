@@ -4,6 +4,15 @@ a { color: #333; }
 h1 a{
     color: #C25100;
 }
+
+.hide-when-small {
+  display: none;
+}
+@media (min-width: 768px) {
+  td.hide-when-small, th.hide-when-small {
+    display: table-cell;
+  }
+}
 .top-bottom-strip {
   background-color: #343a40;
 }
