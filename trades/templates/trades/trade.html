@@ -8,48 +8,60 @@
     </div>
     <h2>Trade detail : {{trade.ticker}}</h2>
     <h3>{{trade.name}}</h3>
-    <dl class="row">
-      <dt class="col-sm-2">Asset class</dt>
-      <dd class="col-sm-9">{{trade.get_asset_class_display}}</dd>
 
-      <dt class="col-sm-2">Date</dt>
-      <dd class="col-sm-9">{{trade.trade_date}}</dd>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
 
-      <dt class="col-sm-2">Action</dt>
-      <dd class="col-sm-9">{{trade.get_action_display}}</dd>
+          <dl class="row">
+            <dt class="col-sm-2">Asset class</dt>
+            <dd class="col-sm-9">{{trade.get_asset_class_display}}</dd>
 
-      <dt class="col-sm-2">Quantity</dt>
-      <dd class="col-sm-9">{{trade.number_of_shares}}</dd>
+            <dt class="col-sm-2">Date</dt>
+            <dd class="col-sm-9">{{trade.trade_date}}</dd>
 
-      <dt class="col-sm-2">Price</dt>
-      <dd class="col-sm-9">{{trade.currency}} {{trade.price_paid}}</dd>
+            <dt class="col-sm-2">Action</dt>
+            <dd class="col-sm-9">{{trade.get_action_display}}</dd>
 
-      {% if trade.is_buy %}
-        <dt class="col-sm-2">Current price</dt>
-        <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
+            <dt class="col-sm-2">Quantity</dt>
+            <dd class="col-sm-9">{{trade.number_of_shares}}</dd>
 
-        {% if trade.currency != 'CHF' %}
-        <dt class="col-sm-2">Total in CHF</dt>
-        <dd class="col-sm-9">{{total_value_in_chf}}</dd>
-        {% endif %}
-      {% endif %}
+            <dt class="col-sm-2">Price</dt>
+            <dd class="col-sm-9">{{trade.currency}} {{trade.price_paid}}</dd>
 
-      <dt class="col-sm-2">
-        <span class="badge badge-pill badge-danger">
-          <a href="/trades/{{ trade.id }}/delete/" alt="Delete">Delete</a>
-        </span>
-      </dt>
-      
-    </dl>
-    <br>
-    {% if error_message %}
-      <div class="alert alert-danger" role="alert">
-        {{ error_message }}
-      </div>
-      <br>
-    {% else %}
-      <div id="container" style="height: 700px; "></div>
-    {% endif %}
+            {% if trade.is_buy %}
+              <dt class="col-sm-2">Current price</dt>
+              <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
+
+              {% if trade.currency != 'CHF' %}
+              <dt class="col-sm-2">Tota8 in CHF</dt>
+              <dd class="col-sm-9">{{total_value_in_chf}}</dd>
+              {% endif %}
+            {% endif %}
+
+            <dt class="col-sm-2">
+              <span class="badge badge-pill badge-danger">
+                <a href="/trades/{{ trade.id }}/delete/" alt="Delete">Delete</a>
+              </span>
+            </dt>
+          </dl>
+          <br>
+        </div>
+        <div class="col-sm-8">
+
+          {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+              {{ error_message }}
+            </div>
+            <br>
+          {% else %}
+            <div id="container" style="height: 700px; "></div>
+          {% endif %}
+        </div>
+    </div>
+
+
+
     <script type="text/javascript">
       $.getJSON('/quote/{{trade.ticker}}.json', function (data) {
 
