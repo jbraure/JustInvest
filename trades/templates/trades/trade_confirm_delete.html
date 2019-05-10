@@ -6,7 +6,7 @@
       <a href="{% url "trades" %}">Trades</a>
     </div>
 
-    <h2>Delete a trade</h2>
+    <h2>Delete a trade : {{ trade.ticker }}</h2>
 
     <p>Are you sure you want to delete the trade : {{ trade.ticker }} : {{ trade.name }} (id = {{trade.id}})?</p>
 
