@@ -14,32 +14,32 @@
         <div class="col-sm-4">
 
           <dl class="row">
-            <dt class="col-sm-2">Asset class</dt>
-            <dd class="col-sm-9">{{trade.get_asset_class_display}}</dd>
+            <dt class="col-sm-4">Asset class</dt>
+            <dd class="col-sm-6">{{trade.get_asset_class_display}}</dd>
 
-            <dt class="col-sm-2">Date</dt>
-            <dd class="col-sm-9">{{trade.trade_date}}</dd>
+            <dt class="col-sm-4">Date</dt>
+            <dd class="col-sm-6">{{trade.trade_date}}</dd>
 
-            <dt class="col-sm-2">Action</dt>
-            <dd class="col-sm-9">{{trade.get_action_display}}</dd>
+            <dt class="col-sm-4">Action</dt>
+            <dd class="col-sm-6">{{trade.get_action_display}}</dd>
 
-            <dt class="col-sm-2">Quantity</dt>
-            <dd class="col-sm-9">{{trade.number_of_shares}}</dd>
+            <dt class="col-sm-4">Quantity</dt>
+            <dd class="col-sm-6">{{trade.number_of_shares}}</dd>
 
-            <dt class="col-sm-2">Price</dt>
-            <dd class="col-sm-9">{{trade.currency}} {{trade.price_paid}}</dd>
+            <dt class="col-sm-4">Price</dt>
+            <dd class="col-sm-6">{{trade.currency}} {{trade.price_paid}}</dd>
 
             {% if trade.is_buy %}
-              <dt class="col-sm-2">Current price</dt>
-              <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
+              <dt class="col-sm-4">Current price</dt>
+              <dd class="col-sm-6">{{trade.currency}} {{trade.current_price}}</dd>
 
               {% if trade.currency != 'CHF' %}
-              <dt class="col-sm-2">Total in CHF</dt>
-              <dd class="col-sm-9">{{total_value_in_chf}}</dd>
+              <dt class="col-sm-4">Total in CHF</dt>
+              <dd class="col-sm-6">{{total_value_in_chf}}</dd>
               {% endif %}
             {% endif %}
 
-            <dt class="col-sm-2">
+            <dt class="col-sm-4">
               <span class="badge badge-pill badge-danger">
                 <a href="/trades/{{ trade.id }}/delete/" alt="Delete">Delete</a>
               </span>
