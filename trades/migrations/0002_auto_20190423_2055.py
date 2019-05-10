@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='trade',
-            name='trade_date',
+            name='purchase_date',
             field=models.DateTimeField(default=django.utils.timezone.now, verbose_name='Date purchased'),
         ),
     ]
