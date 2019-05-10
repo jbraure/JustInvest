@@ -58,7 +58,11 @@
             </td>
             <td>{{ trade.currency }}</td>
             <td>Modify</td>
-            <td>Delete</td>
+            <td>
+              <span class="badge badge-pill badge-danger">
+                <a href="/trades/{{ trade.id }}/delete/" alt="Delete">x</a>
+              </span>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
