@@ -9,7 +9,7 @@
     <h2>Trade detail : {{trade.ticker}}</h2>
     <h3>{{trade.name}}</h3>
 
-    <div class="container">
+    <div class="container-fluid ">
       <div class="row">
         <div class="col-sm-4">
 
@@ -34,7 +34,7 @@
               <dd class="col-sm-9">{{trade.currency}} {{trade.current_price}}</dd>
 
               {% if trade.currency != 'CHF' %}
-              <dt class="col-sm-2">Tota8 in CHF</dt>
+              <dt class="col-sm-2">Total in CHF</dt>
               <dd class="col-sm-9">{{total_value_in_chf}}</dd>
               {% endif %}
             {% endif %}
@@ -55,7 +55,7 @@
             </div>
             <br>
           {% else %}
-            <div id="container" style="height: 700px; "></div>
+            <div id="chart_container" style="height: 600px; "></div>
           {% endif %}
         </div>
     </div>
@@ -97,7 +97,7 @@
 
 
             // create the chart
-            Highcharts.stockChart('container', {
+            Highcharts.stockChart('chart_container', {
 
                 rangeSelector: {
                     selected: 5
