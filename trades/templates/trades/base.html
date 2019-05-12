@@ -1,3 +1,4 @@
+
 {% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
@@ -22,18 +23,40 @@
   </head>
 
   <body class="top-bottom-strip">
-    <div class="page-header title-font top-bottom-strip">
-      <h1><a href="/"><span class="lsl-color">Just</span><span class="trader-color">Invest</span></a></h1>
-    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <h1><a href="/"><span class="just-color">Just</span>
+        <span class="invest-color">Invest</span></a></h1>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "home" %}">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "trades" %}">Trades</a>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="username-logout" class="title-font"> {{ user.username }}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "logout" %}">Logout</a>
+          </li>
+          {% else %}
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "admin:index" %}">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     <div id="page-content">
-      {% if user.is_authenticated %}
-        <p id="username-logout" class="title-font"> {{ user.username }} |
-        <a href="{% url "logout" %}">Logout</a> |
-        <a href="{% url "admin:index" %}">Admin</a>
-      {% else %}
-        <p id="username-logout" class="title-font"> <a href="{% url "admin:index" %}">Admin</a></p>
-      {% endif %}
-      </p>
       {% block page-content %}
       {% endblock page-content %}
     </div>

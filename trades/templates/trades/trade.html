@@ -1,11 +1,6 @@
 {% extends "trades/base.html" %}
 {% block title%}JustInvest{% endblock title %}
   {% block page-content %}
-    <div>
-      <a href="{% url "home" %}">Portfolio</a> >
-      <a href="{% url "trades" %}">Trades</a> >
-      Trade detail
-    </div>
     <h2>Trade detail : {{trade.ticker}}</h2>
     <h3>{{trade.name}}</h3>
 

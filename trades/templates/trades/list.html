@@ -1,12 +1,8 @@
 {% extends "trades/base.html" %}
 {% block title%}JustInvest{% endblock title %}
   {% block page-content %}
-    <div>
-      <a href="{% url "home" %}">Portfolio</a> >
-      <a href="{% url "trades" %}">Trades</a>
-    </div>
   {% if trades %}
-    <h2>Your trades ({{ trades|length }})</h2>
+    <h2>Trades ({{ trades|length }})</h2>
     <div>
       <a class="btn btn-primary btn-sm" href="{% url "create" %}" role="button">Enter a new trade</a>
     </div>

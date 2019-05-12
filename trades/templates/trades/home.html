@@ -1,13 +1,7 @@
 {% extends "trades/base.html" %}
 {% block title %}JustInvest{% endblock title %}
 {% block page-content %}
-<!-- <h1>Welcome {{ user.first_name }}!</h1> -->
-  <div><a href="{% url "home" %}">Portfolio</a> </div>
-  <h2>Your portfolio</h2>
-  <div class="home-option">
-    <a href="{% url "trades" %}">Trades</a> |
-    <a href="{% url "create" %}">Create new trade</a>
-  </div>
+  <h2>Portfolio</h2>
   <div class="container">
     <div class="row">
       <div id="portfolio-container" style="width:400px; height:500px;"></div>

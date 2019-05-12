@@ -7,11 +7,6 @@
       <p class="{{ message.tags }}">{{ message }}</p>
     {% endfor %}
   {% endif %}
-  <div><a href="{% url "home" %}">Portfolio</a> >
-    <a href="{% url "trades" %}">Trades</a> >
-    Enter a new trade
-  </div>
-
   <h2>Enter a new Trade</h2>
   <div class="narrow-centered">
     <form action="{% url "create" %}" method="post">
