@@ -18,6 +18,8 @@ from .lib.justinvest import finance
 
 
 class HomeView(TemplateView):
+    """ View used to display the PORTFOLIO globally with plots.
+    """
     template_name = 'trades/home.html'
 
     @method_decorator(login_required(login_url=reverse_lazy('login')))
@@ -26,6 +28,8 @@ class HomeView(TemplateView):
         return self.render_to_response(context)
 
 class TradeListView(TemplateView):
+    """ View used to display the TRADES list.
+    """
     template_name = 'trades/list.html'
 
     @method_decorator(login_required(login_url=reverse_lazy('login')))
@@ -39,9 +43,8 @@ class TradeListView(TemplateView):
         return self.render_to_response(context)
 
     def update_values(self, trades):
-        """
-        Updates values on the Trade objects : current (last close) price,
-        positivity (value raised)
+        """ Updates values on the Trade objects : current (last close) price,
+            positivity (value raised)
         """
         for trade in trades:
             last_close = finance.get_last_close(trade.ticker)
@@ -53,6 +56,8 @@ class TradeListView(TemplateView):
 
 
 class TradeFormView(SuccessMessageMixin, FormView):
+    """ View used to ENTER NEW TRADES
+    """
     template_name = 'trades/create.html'
     form_class = TradeForm
     success_url = reverse_lazy('trades')
