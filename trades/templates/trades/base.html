@@ -28,15 +28,16 @@
 
   <body class="top-bottom-strip">
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <h1><a href="/"><span class="just-color">Just</span><span class="invest-color">Invest</span></a></h1>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <h2>
+        <a class="navbar-brand" href="/"><span class="just-color">Just</span><span class="invest-color">Invest</span></a>
+      </h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url "home" %}">Portfolio</a>
@@ -52,10 +53,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url "admin:index" %}">Admin</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href=""> Logged as: {{ user.username }}</a>
-          </li>
         </ul>
+        <span class="navbar-text">
+          Logged as: {{ user.username }}
+        </span>
       </div>
     </nav>
 
