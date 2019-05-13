@@ -46,16 +46,19 @@
             <a class="nav-link" href="{% url "trades" %}">Trades</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{% url "admin:index" %}">Admin</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url "logout" %}">Logout</a>
           </li>
           {% else %}
-          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{% url "admin:index" %}">Admin</a>
           </li>
+          {% endif %}
         </ul>
         <span class="navbar-text">
-          Logged as: {{ user.username }}
+          {{ user.username }}
         </span>
       </div>
     </nav>
