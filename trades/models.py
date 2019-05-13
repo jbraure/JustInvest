@@ -54,6 +54,23 @@ class Trade(models.Model):
     def is_buy(self):
         return self.action == 'BUY'
 
+
+class HoldingManager(models.Manager):
+    """ Class used to create holdings.
+        See doc
+            https://docs.djangoproject.com/en/2.2/ref/models/instances/
+    """
+    def create_holding(self, user, ticker, name,
+        asset_class, currency, number_of_shares):
+        holding = self.create(
+            user = user,
+            ticker = ticker,
+            name = name,
+            asset_class = asset_class,
+            currency = currency,
+            number_of_shares = number_of_shares)
+        return holding
+
 class Holding(models.Model):
     """
     Class representing an asset hold in the portfolio. Holdings will mostly
@@ -65,14 +82,9 @@ class Holding(models.Model):
     asset_class = models.CharField('Asset class', max_length=50, default='STOCK', choices=ASSET_CLASSES)
     currency = models.CharField('Currency', max_length=3, default='USD', choices=CURRENCIES)
     number_of_shares = models.IntegerField('Number of shares', default=1)
+    # See HoldingManager
+    objects = HoldingManager()
 
-    def __init__(self, user, ticker, name, asset_class, currency, number_of_shares):
-        self.user = user
-        self.ticker = ticker
-        self.name = name
-        self.asset_class = asset_class
-        self.currency = currency
-        self.number_of_shares = number_of_shares
 
 class BalanceHistory(models.Model):
     """

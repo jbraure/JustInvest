@@ -42,4 +42,4 @@ class HoldingAdmin(admin.ModelAdmin):
     ]
 
     # this adds a filter feature on the right of the panel
-    list_filter = ['user']
+    list_filter = ['user', 'asset_class']

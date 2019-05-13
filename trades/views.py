@@ -12,7 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse, JsonResponse
 
 # Local application imports
-from .models import Trade, Holding
+from .models import Trade, HoldingManager, Holding
 from .forms import TradeForm
 from .lib.justinvest import finance
 
@@ -76,13 +76,15 @@ class TradeFormView(SuccessMessageMixin, FormView):
 
     def _save_with_user(self, form):
         self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        print('#### HERE WE JUST ADDED A TRADE ! ticker = '+self.object.ticker)
-        print('   quantity = '+str(self.object.number_of_shares))
-        print('   asset class = '+str(self.object.asset_class))
-        # TODO create or update an Holding record
+        trade = self.object
+        trade.user = self.request.user
+        # create or update an Holding record
+        holding = Holding.objects.create_holding(trade.user, trade.ticker, trade.name, trade.asset_class,
+            trade.currency, trade.number_of_shares)
+        trade.save()
 
-        self.object.save()
+    def create_or_update_holding(self, trade):
+        None
 
 class TradeDelete(DeleteView):
     model = Trade
