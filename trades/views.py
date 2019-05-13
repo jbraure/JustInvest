@@ -12,7 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse, JsonResponse
 
 # Local application imports
-from .models import Trade
+from .models import Trade, Holding
 from .forms import TradeForm
 from .lib.justinvest import finance
 
@@ -80,8 +80,8 @@ class TradeFormView(SuccessMessageMixin, FormView):
         print('#### HERE WE JUST ADDED A TRADE ! ticker = '+self.object.ticker)
         print('   quantity = '+str(self.object.number_of_shares))
         print('   asset class = '+str(self.object.asset_class))
-        # TODO create or update an AssetClass record
-        # TODO create or update an Holdings record
+        # TODO create or update an Holding record
+
         self.object.save()
 
 class TradeDelete(DeleteView):
