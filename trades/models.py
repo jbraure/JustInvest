@@ -57,8 +57,8 @@ class Trade(models.Model):
 
 class HoldingManager(models.Manager):
     """ Class used to create holdings.
-        See doc
-            https://docs.djangoproject.com/en/2.2/ref/models/instances/
+        See doc:
+        https://docs.djangoproject.com/en/2.2/ref/models/instances/
     """
     def create_holding(self, user, ticker, name,
         asset_class, currency, number_of_shares):

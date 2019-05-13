@@ -75,9 +75,18 @@ class TradeFormView(SuccessMessageMixin, FormView):
         return super(TradeFormView, self).form_valid(form)
 
     def create_or_update_holding(self, trade):
-        Holding.objects.create_holding(trade.user, trade.ticker,
-            trade.name, trade.asset_class,
-            trade.currency, trade.number_of_shares)
+        holdings = Holding.objects.filter(user=trade.user, ticker=trade.ticker)
+        holding = holdings.first()
+
+        if holding is None:
+            # when not existing : create
+            Holding.objects.create_holding(trade.user, trade.ticker,
+                trade.name, trade.asset_class,
+                trade.currency, trade.number_of_shares)
+        else:
+            # else update (increment) holding count
+            holding.number_of_shares += trade.number_of_shares
+            holding.save()
 
     def _save_with_user(self, form):
         self.object = form.save(commit=False)
