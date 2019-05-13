@@ -74,7 +74,7 @@ class TradeFormView(SuccessMessageMixin, FormView):
         self._save_with_user(form)
         return super(TradeFormView, self).form_valid(form)
 
-    def create_or_update_holding(self, trade):
+    def create_or_update_holding_on_buy(self, trade):
         holdings = Holding.objects.filter(user=trade.user, ticker=trade.ticker)
         holding = holdings.first()
 
@@ -88,11 +88,28 @@ class TradeFormView(SuccessMessageMixin, FormView):
             holding.number_of_shares += trade.number_of_shares
             holding.save()
 
+    def create_or_update_holding_on_sell(self, trade):
+        holdings = Holding.objects.filter(user=trade.user, ticker=trade.ticker)
+        holding = holdings.first()
+
+        if holding is None:
+            # when not existing : create
+            # TODO error message
+            print('ERROR : CANNOT SELL A HOLDING NOT FOUND')
+        else:
+            # else update (decrement) holding count
+            holding.number_of_shares -= trade.number_of_shares
+            holding.save()
+
     def _save_with_user(self, form):
         self.object = form.save(commit=False)
         trade = self.object
         trade.user = self.request.user
-        self.create_or_update_holding(trade)
+        if trade.is_buy():
+            self.create_or_update_holding_on_buy(trade)
+        else:
+            self.create_or_update_holding_on_sell(trade)
+
         trade.save()
 
 
