@@ -54,6 +54,19 @@ class Trade(models.Model):
     def is_buy(self):
         return self.action == 'BUY'
 
+class Holding(models.Model):
+    """
+    Class representing an asset hold in the portfolio. Holdings will mostly
+    be updated, when new shares are bought or sold upon rebalancing.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
+    ticker = models.CharField('Ticker', max_length=20, default='AAPL')
+    name = models.CharField('Name', max_length=50, default='Apple')
+    asset_class = models.CharField('Asset class', max_length=50, default='STOCK', choices=ASSET_CLASSES)
+    currency = models.CharField('Currency', max_length=3, default='USD', choices=CURRENCIES)
+    number_of_shares = models.IntegerField('Number of shares', default=1)
+
+
 class BalanceHistory(models.Model):
     """
     Class representing an item of portfolio balance history,
