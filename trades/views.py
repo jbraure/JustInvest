@@ -74,17 +74,19 @@ class TradeFormView(SuccessMessageMixin, FormView):
         self._save_with_user(form)
         return super(TradeFormView, self).form_valid(form)
 
+    def create_or_update_holding(self, trade):
+        Holding.objects.create_holding(trade.user, trade.ticker,
+            trade.name, trade.asset_class,
+            trade.currency, trade.number_of_shares)
+
     def _save_with_user(self, form):
         self.object = form.save(commit=False)
         trade = self.object
         trade.user = self.request.user
-        # create or update an Holding record
-        holding = Holding.objects.create_holding(trade.user, trade.ticker, trade.name, trade.asset_class,
-            trade.currency, trade.number_of_shares)
+        self.create_or_update_holding(trade)
         trade.save()
 
-    def create_or_update_holding(self, trade):
-        None
+
 
 class TradeDelete(DeleteView):
     model = Trade
