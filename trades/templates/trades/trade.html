@@ -35,9 +35,11 @@
             {% endif %}
 
             <dt class="col-sm-4">
-              <span class="badge badge-pill badge-danger">
-                <a href="/trades/{{ trade.id }}/delete/" alt="Delete">Delete</a>
-              </span>
+              <a href="/trades/{{ trade.id }}/delete/" alt="Delete">
+                <i class='fas fa-window-close' style='font-size:20px;color:red'></i>
+                Delete
+              </a>
+
             </dt>
           </dl>
           <br>
