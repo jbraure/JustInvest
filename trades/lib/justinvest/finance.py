@@ -1,5 +1,6 @@
 # Standard library imports
 from datetime import date, timedelta
+from decimal import Decimal as D
 import requests
 
 # Third party imports
@@ -61,7 +62,7 @@ def eur_to_chf(eur):
     response = requests.get(url)
     data = response.json()
     one_eur_in_chf = data['rates']['CHF']
-    converted = eur * one_eur_in_chf
+    converted = D(eur) * D(one_eur_in_chf)
     return converted
 
 def usd_to_chf(usd):
@@ -70,5 +71,5 @@ def usd_to_chf(usd):
     response = requests.get(url)
     data = response.json()
     one_dollar_in_chf = data['rates']['CHF']
-    converted = usd * one_dollar_in_chf
+    converted = D(usd) * D(one_dollar_in_chf)
     return converted

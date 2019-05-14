@@ -38,9 +38,9 @@ class Trade(models.Model):
     action = models.CharField('Action', max_length=4, default='BUY', choices=ACTIONS)
     trade_date = models.DateTimeField('Date', default=timezone.now)
     number_of_shares = models.FloatField('Number of shares', default=1)
-    price_per_share_paid = models.FloatField('Price paid (per share)')
-    current_price = models.FloatField('Last close value', default=0)
-    total_value = models.FloatField('Total value', default=0)
+    price_per_share_paid = models.DecimalField('Price paid (per share)', decimal_places=2, max_digits=10)
+    current_price = models.DecimalField('Last close value', decimal_places=2, max_digits=10, default=0)
+    total_value = models.DecimalField('Total value', decimal_places=2, max_digits=10, default=0)
     positive = models.BooleanField('positive', default=False)
 
     def __str__(self):
@@ -82,7 +82,7 @@ class Holding(models.Model):
     name = models.CharField('Name', max_length=50, default='Apple')
     asset_class = models.CharField('Asset class', max_length=50, default='STOCK', choices=ASSET_CLASSES)
     currency = models.CharField('Currency', max_length=3, default='USD', choices=CURRENCIES)
-    number_of_shares = models.IntegerField('Number of shares', default=1)
+    number_of_shares = models.FloatField('Number of shares', default=1)
     # See HoldingManager
     objects = HoldingManager()
 
@@ -94,5 +94,5 @@ class BalanceHistory(models.Model):
     portfolio performance.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
-    total_value_chf = models.FloatField('Total value in CHF', default=0)
+    total_value_chf = models.DecimalField('Total value in CHF', decimal_places=2, max_digits=10, default=0)
     date = models.DateField('Date', default=timezone.now)

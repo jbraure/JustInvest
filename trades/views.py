@@ -1,3 +1,5 @@
+from decimal import Decimal as D
+
 # Third party imports
 from pandas_datareader.data import DataReader
 from django.shortcuts import get_object_or_404, render
@@ -50,7 +52,7 @@ class TradeListView(TemplateView):
             last_close = finance.get_last_close(trade.ticker)
             trade.current_price = last_close
             # current asset values
-            trade.total_value = trade.number_of_shares * last_close
+            trade.total_value = D(trade.number_of_shares * last_close)
             trade.positive = trade.price_per_share_paid < trade.current_price
             trade.save()
 
@@ -132,10 +134,10 @@ class TradeDetailView(TemplateView):
         context['buy_month'] = trade.trade_date.month-1
         context['buy_day'] = trade.trade_date.day
         if trade.currency == 'USD':
-            context['total_value_in_chf'] = finance.usd_to_chf(trade.total_value)
+            context['total_value_in_chf'] = D(finance.usd_to_chf(trade.total_value))
         else:
             if trade.currency == 'EUR':
-                context['total_value_in_chf'] = finance.eur_to_chf(trade.total_value)
+                context['total_value_in_chf'] = D(finance.eur_to_chf(trade.total_value))
         return self.render_to_response(context)
 
 class StockChartView(TemplateView):
