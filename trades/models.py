@@ -21,6 +21,7 @@ ASSET_CLASSES = (
     ('LONG_BONDS', 'Long-term bonds'),
     ('MED_BONDS', 'Medium-term bonds'),
     ('SHORT_BONDS', 'Short-term bonds'),
+    ('CRYPTO', 'Cryptocurrencies'),
     ('OTHER', 'Other'),
 )
 
