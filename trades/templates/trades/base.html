@@ -40,27 +40,45 @@
         <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url "home" %}">Portfolio</a>
+            <a class="nav-link" href="{% url "home" %}">
+              <i class='fas fa-chart-line'></i>
+              Portfolio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url "holdings" %}">Holdings</a>
+            <a class="nav-link" href="{% url "holdings" %}">
+              <i class='fas fa-piggy-bank'></i>
+              Holdings</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url "trades" %}">Trades</a>
+            <a class="nav-link" href="{% url "trades" %}">
+              <i class='fas fa-euro-sign'></i>
+              Trades</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url "admin:index" %}">Admin</a>
+            <a class="nav-link" href="">
+            <i class='fas fa-wallet'></i>
+            Wallet</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url "logout" %}">Logout</a>
+            <a class="nav-link" href="{% url "admin:index" %}">
+              <i class="fa fa-cog fa-spin"></i>
+              Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "logout" %}">
+              <i class='fas fa-sign-out-alt'></i>
+              Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url "admin:index" %}">Admin</a>
+            <a class="nav-link" href="{% url "admin:index" %}">
+              <i class="fa fa-cog fa-spin"></i>
+              Admin</a>
           </li>
           {% endif %}
         </ul>
         <span class="navbar-text">
+          <i class='fas fa-user-circle'></i>
           {{ user.username }}
         </span>
       </div>
