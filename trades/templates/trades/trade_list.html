@@ -53,9 +53,9 @@
             </td>
             <td class='hide-when-small'>{{ trade.currency }}</td>
             <td class='hide-when-small'>
-              <span class="badge badge-pill badge-danger">
-                <a href="/trades/{{ trade.id }}/delete/" alt="Delete">X</a>
-              </span>
+              <a href="/trades/{{ trade.id }}/delete/" alt="Delete">
+                <i class='fas fa-window-close' style='font-size:20px;color:red'></i>
+              </a>
             </td>
           </tr>
         {% endfor %}
