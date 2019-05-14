@@ -32,7 +32,7 @@ class HomeView(TemplateView):
 class TradeListView(TemplateView):
     """ View used to display the TRADES list.
     """
-    template_name = 'trades/list.html'
+    template_name = 'trades/trade_list.html'
 
     @method_decorator(login_required(login_url=reverse_lazy('login')))
     def get(self, request, *args, **kwargs):
