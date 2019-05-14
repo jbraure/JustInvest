@@ -21,6 +21,8 @@
       </thead>
       <tbody>
         {% for h in holdings %}
+          {% if h.number_of_shares > 0 %}
+
           <tr class="trades-list {% cycle 'light-gray' 'white' %}">
             <td>{{ h.ticker }}</td>
             <td class='hide-when-small'>{{ h.get_asset_class_display }}</td>
@@ -30,6 +32,7 @@
             <td class="right-align"> 567.89 </td>
             <td class='hide-when-small'>{{ h.currency }}</td>
           </tr>
+          {% endif %}
         {% endfor %}
       </tbody>
     </table>
