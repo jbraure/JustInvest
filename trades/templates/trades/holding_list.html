@@ -2,7 +2,7 @@
 {% block title%}JustInvest{% endblock title %}
   {% block page-content %}
   {% if holdings %}
-    <h2>Holdings ({{ holdings|length }})</h2>
+    <h2>Holdings</h2>
     <div>
       <a class="btn btn-primary btn-sm" href="{% url "create" %}" role="button">Enter a new trade</a>
     </div>
@@ -22,7 +22,6 @@
       <tbody>
         {% for h in holdings %}
           {% if h.number_of_shares > 0 %}
-
           <tr class="trades-list {% cycle 'light-gray' 'white' %}">
             <td>{{ h.ticker }}</td>
             <td class='hide-when-small'>{{ h.get_asset_class_display }}</td>
@@ -37,8 +36,10 @@
       </tbody>
     </table>
   {% else %}
-    <h1>You have no holding</h1>
-    <div><a href="{% url "create" %}">Create new trade</a></div>
+    <h2>You have no holding</h2>
+    <div>
+      <a class="btn btn-primary btn-sm" href="{% url "create" %}" role="button">Enter a new trade</a>
+    </div>
   {% endif %}
   <br>
 {% endblock page-content %}
