@@ -21,7 +21,6 @@
           <th class='hide-when-small right-align'>Total value</th>
           <th class='hide-when-small'>Currency</th>
           <th class='hide-when-small'></th>
-          <th class='hide-when-small'></th>
         </tr>
       </thead>
       <tbody>
@@ -53,10 +52,9 @@
               {% endif %}
             </td>
             <td class='hide-when-small'>{{ trade.currency }}</td>
-            <td class='hide-when-small'>Modify</td>
             <td class='hide-when-small'>
               <span class="badge badge-pill badge-danger">
-                <a href="/trades/{{ trade.id }}/delete/" alt="Delete">x</a>
+                <a href="/trades/{{ trade.id }}/delete/" alt="Delete">X</a>
               </span>
             </td>
           </tr>
