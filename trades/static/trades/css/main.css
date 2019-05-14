@@ -29,18 +29,26 @@ h1 a{
 #login-box {
   padding-bottom: 20px;
 }
-#page-content {
-  background-color: white;
-}
  h1 a, h2, h3{
     font-family: 'Russo One', sans-serif;
 }
 .title-font {
     font-family: 'Russo One', sans-serif;
 }
-#page-content {
-    padding-left: 60px;
-    padding-right: 60px;
+.page-content {
+    background-color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    style="margin-top:20px"
+}
+@media (min-width: 768px) {
+  .page-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 #username-logout {
   text-align: right;
