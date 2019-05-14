@@ -1,0 +1,15 @@
+{% extends "trades/base.html" %}
+{% load crispy_forms_tags %}
+{% block title%}JustInvest{% endblock title %}
+{% block page-content %}
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Sign up</button>
+    <br><br>
+  </form>
+  {% endblock page-content %}
+  {% block footer %}
+    {% include "trades/footer.html" %}
+  {% endblock footer %}

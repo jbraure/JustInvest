@@ -8,6 +8,7 @@
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit" class="btn btn-success">Login</button>
+    <a class="btn btn-primary" href="{% url "signup" %}" role="button">Sign up</a>
   </form>
 </div>
 {% endblock page-content %}

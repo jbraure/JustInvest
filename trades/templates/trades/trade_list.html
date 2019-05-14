@@ -63,7 +63,9 @@
     </table>
   {% else %}
     <h1>You have no trade</h1>
-    <div><a href="{% url "create" %}">Create new trade</a></div>
+    <div>
+      <a class="btn btn-primary btn-sm" href="{% url "create" %}" role="button">Enter a new trade</a>
+    </div>
   {% endif %}
   <br>
 {% endblock page-content %}
