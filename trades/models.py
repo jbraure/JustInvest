@@ -38,7 +38,7 @@ class Trade(models.Model):
     action = models.CharField('Action', max_length=4, default='BUY', choices=ACTIONS)
     trade_date = models.DateTimeField('Date', default=timezone.now)
     number_of_shares = models.FloatField('Number of shares', default=1)
-    price_per_share_paid = models.DecimalField('Price paid (per share)', decimal_places=2, max_digits=10)
+    price_per_share_paid = models.DecimalField('Price paid (per share) in asset currency', decimal_places=2, max_digits=10)
     current_price = models.DecimalField('Last close value', decimal_places=2, max_digits=10, default=0)
     total_value = models.DecimalField('Total value', decimal_places=2, max_digits=10, default=0)
     positive = models.BooleanField('positive', default=False)
