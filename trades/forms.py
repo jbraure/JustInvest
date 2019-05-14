@@ -21,5 +21,5 @@ class TradeForm(ModelForm):
             'trade_date',
             'action',
             'number_of_shares',
-            'price_paid'
+            'price_per_share_paid'
         ]

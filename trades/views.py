@@ -51,7 +51,7 @@ class TradeListView(TemplateView):
             trade.current_price = last_close
             # current asset values
             trade.total_value = trade.number_of_shares * last_close
-            trade.positive = trade.price_paid < trade.current_price
+            trade.positive = trade.price_per_share_paid < trade.current_price
             trade.save()
 
 

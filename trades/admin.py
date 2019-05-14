@@ -9,13 +9,13 @@ class TradeAdmin(admin.ModelAdmin):
 
     # fields displayed in admin panel list view
     list_display = ('ticker', 'name', 'asset_class', 'user', 'currency',
-        'number_of_shares', 'action', 'price_paid', 'trade_date', 'total_value')
+        'number_of_shares', 'action', 'price_per_share_paid', 'trade_date', 'total_value')
 
     fieldsets = [
         ('Trade detail', # label displayed in admin trade detail
         # displayed / editable fields in detail panel :
         {'fields': ['user', 'name', 'asset_class', 'ticker', 'currency',
-            'number_of_shares', 'action', 'price_paid', 'trade_date']
+            'number_of_shares', 'action', 'price_per_share_paid', 'trade_date']
         })
     ]
 

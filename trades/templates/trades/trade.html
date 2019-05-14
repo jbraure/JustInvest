@@ -21,8 +21,8 @@
             <dt class="col-sm-4">Quantity</dt>
             <dd class="col-sm-6">{{trade.number_of_shares}}</dd>
 
-            <dt class="col-sm-4">Price</dt>
-            <dd class="col-sm-6">{{trade.currency}} {{trade.price_paid}}</dd>
+            <dt class="col-sm-4">Price paid per share</dt>
+            <dd class="col-sm-6">{{trade.currency}} {{trade.price_per_share_paid}}</dd>
 
             {% if trade.is_buy %}
               <dt class="col-sm-4">Current price</dt>
@@ -156,7 +156,7 @@
                     data: [{
                         x: Date.UTC({{buy_year}}, {{buy_month}}, {{buy_day}}),
                         title: 'BUY',
-                        text: 'BUY : {{trade.number_of_shares}} shares at {{trade.currency}} {{trade.price_paid}} per share'
+                        text: 'BUY : {{trade.number_of_shares}} shares at {{trade.currency}} {{trade.price_per_share_paid}} per share'
                     }],
                     yAxis: 0,
                     color: 'black', // Highcharts.getOptions().colors[0], // same as onSeries

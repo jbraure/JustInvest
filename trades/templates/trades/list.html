@@ -16,7 +16,7 @@
           <th class='hide-when-small'>Nb of shares</th>
           <th class='hide-when-small'>Date</th>
           <th>Action</th>
-          <th class='hide-when-small right-align'>Price paid/sold</th>
+          <th class='hide-when-small right-align'>Price paid per share</th>
           <th class='right-align'>Current price</th>
           <th class='hide-when-small right-align'>Total value</th>
           <th class='hide-when-small'>Currency</th>
@@ -34,7 +34,7 @@
             <td class='hide-when-small'>{{ trade.trade_date }}</td>
             <td>{{ trade.action }}</td>
             <td class='hide-when-small right-align'>
-                  {{ trade.price_paid }}
+                  {{ trade.price_per_share_paid }}
             </td>
             <td class='right-align'>
               {% if trade.is_buy %}
