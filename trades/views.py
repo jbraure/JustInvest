@@ -29,6 +29,20 @@ class HomeView(TemplateView):
         context = self.get_context_data(**kwargs)
         return self.render_to_response(context)
 
+class HoldingListView(TemplateView):
+    """ View used to display the holdings.
+    """
+    template_name = 'trades/holding_list.html'
+
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        holdings = Holding.objects \
+            .filter(user=request.user) \
+            .order_by('asset_class')
+        context['holdings'] = list(holdings)
+        return self.render_to_response(context)
+
 class TradeListView(TemplateView):
     """ View used to display the TRADES list.
     """

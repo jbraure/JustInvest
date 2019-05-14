@@ -1,0 +1,40 @@
+{% extends "trades/base.html" %}
+{% block title%}JustInvest{% endblock title %}
+  {% block page-content %}
+  {% if holdings %}
+    <h2>Holdings ({{ holdings|length }})</h2>
+    <div>
+      <a class="btn btn-primary btn-sm" href="{% url "create" %}" role="button">Enter a new trade</a>
+    </div>
+    <br>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Asset class</th>
+          <th class='hide-when-small'>Name</th>
+          <th>Nb of shares</th>
+          <th class='hide-when-small'>Currency</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for h in holdings %}
+          <tr class="trades-list {% cycle 'light-gray' 'white' %}">
+            <td>{{ h.ticker }}</td>
+            <td class='hide-when-small'>{{ h.get_asset_class_display }}</td>
+            <td class='hide-when-small'>{{ h.name }}</td>
+            <td>{{ h.number_of_shares }}</td>
+            <td class='hide-when-small'>{{ h.currency }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <h1>You have no holding</h1>
+    <div><a href="{% url "create" %}">Create new trade</a></div>
+  {% endif %}
+  <br>
+{% endblock page-content %}
+{% block footer %}
+  {% include "trades/footer.html" %}
+{% endblock footer %}
