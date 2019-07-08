@@ -51,7 +51,7 @@
 - Add DB settings in settings.py
 - Add static file setting in settings.py
 - Make the requirements.txt using `pip freeze > requirements.txt` to declare the package dependencies. Must be at the same level as the .git. See link (1)
-- Make Procfile to declare the start command. See link (1)(3)
+- Make `Procfile` to declare the start command. See link (1)(3)
 - Invoque `heroku create justinvest` to actually create the project on Heroku and receive the git and website urls. See link (3)(8)
 https://justinvest.herokuapp.com/ | https://git.heroku.com/justinvest.git
 - Run : `git init` then `heroku git:remote -a justinvest` to attach git to the new distant repo.
