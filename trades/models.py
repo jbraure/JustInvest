@@ -27,7 +27,7 @@ ASSET_CLASSES = (
 
 class Trade(models.Model):
     """
-    Class representing a buy or sell action.
+    Class representing a buy or sell action, happening at a given date.
     """
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
@@ -74,8 +74,9 @@ class HoldingManager(models.Manager):
 
 class Holding(models.Model):
     """
-    Class representing an asset hold in the portfolio. Holdings will mostly
-    be updated, when new shares are bought or sold upon rebalancing.
+    Class representing an asset hold in the portfolio. Ex: BTC, ZKBG ETF, etc.
+    Holdings will mostly be updated, when new shares are bought or sold upon rebalancing
+    (number of shares incremented or decremented).
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, default='0')
     ticker = models.CharField('Ticker', max_length=20, default='AAPL')
