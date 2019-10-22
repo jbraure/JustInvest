@@ -94,7 +94,7 @@ tzlocal==1.5.1
 urllib3==1.24.2
 wcwidth==0.1.7
 webencodings==0.5.1
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 whitenoise==4.1.2
 widgetsnbextension==3.4.2
 wrapt==1.11.1
